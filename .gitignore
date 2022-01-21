@@ -1,4 +1,3 @@
 .vscode
-@Resources/config.inc
 @Resources/notes.txt
 @Resources/sapk.json
