@@ -11,6 +11,8 @@ DebugColor=0,0,255,0
 MiniIconSize=35
 OptionsHeight=50
 OptionsSize=300
+DropShadowOffset=3
+ShadowColor=0,0,0,66
 ; ------------------------------
 ; File Directory String Literals
 ; ------------------------------
