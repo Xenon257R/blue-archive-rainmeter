@@ -1,6 +1,6 @@
 -- Small Lua script to cleanly hide/unhide all relevant Blue Archive widgets with a single button
 function Initialize()
-    SKIN_LIST = { "BlueArchive\\Currency", "BlueArchive\\Energy", "BlueArchive\\Options", "BlueArchive\\Premium", "BlueArchive\\SchaleFolder",
+    SKIN_LIST = { "BlueArchive\\Currency", "BlueArchive\\Energy", "BlueArchive\\Options", "BlueArchive\\Premium", "BlueArchive\\SchaleFolder", "BlueArchive\\RefreshButton",
         "BlueArchive\\SideApps\\Audio", "BlueArchive\\SideApps\\Discord", "BlueArchive\\SideApps\\RecycleBin", "BlueArchive\\SideApps\\Tasks",
         "BlueArchive\\TrayApps\\Applications", "BlueArchive\\TrayApps\\Emulators", "BlueArchive\\TrayApps\\Firefox",
         "BlueArchive\\TrayApps\\KeePass", "BlueArchive\\TrayApps\\Steam", "BlueArchive\\TrayApps\\TorBrowser", "BlueArchive\\TrayApps\\VSCode",
