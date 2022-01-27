@@ -10,7 +10,9 @@ TrayColor=255,255,255,222
 DebugColor=0,0,255,0
 MiniIconSize=35
 OptionsHeight=50
-OptionsSize=300
+OptionsSize=75
+OptionsEdge=7
+OptionsTextSize=16
 DropShadowOffset=3
 ShadowColor=0,0,0,66
 ; ------------------------------
