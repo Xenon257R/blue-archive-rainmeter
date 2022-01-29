@@ -19,6 +19,15 @@ function Initialize()
     TIME = math.floor(os.time() / 86400)
 end
 
-function GetNumber(id)
+function GetGems(id)
     return FormatIntString(Randomizer(TIME, id) * 120)
+end
+
+function GetPulls(id)
+    local pulls = Randomizer(TIME, id)
+    local punctuation = "."
+    if (pulls >= 100) then
+        punctuation = "!"
+    end
+    return FormatIntString(Randomizer(TIME, id)) .. " allotted pulls today" .. punctuation
 end
