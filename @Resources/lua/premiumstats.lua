@@ -1,3 +1,7 @@
+local function Randomizer(time, seed)
+    return math.floor(200 / (1000000 % (((seed * time) % 283) + 257)))
+end
+
 -- Formats a number string to have commas.
 -- Credits to Bart Kiers from StackOverflow: https://stackoverflow.com/questions/10989788/format-integer-in-lua
 function FormatIntString(number)
@@ -12,10 +16,9 @@ function FormatIntString(number)
 end
 
 function Initialize()
-    math.randomseed(math.floor(os.time() / 86400))
-    INTEGER = math.floor(math.random() * 200) * 120
+    TIME = math.floor(os.time() / 86400)
 end
 
-function GetNumber()
-    return FormatIntString(INTEGER)
+function GetNumber(id)
+    return FormatIntString(Randomizer(TIME, id) * 120)
 end
