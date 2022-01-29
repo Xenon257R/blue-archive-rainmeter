@@ -12,6 +12,8 @@ MiniIconSize=35
 OptionsHeight=50
 OptionsSize=75
 OptionsEdge=7
+SinglePadding=60
+OptionsPadding=#SinglePadding#,0,0,0
 OptionsTextSize=16
 DropShadowOffset=3
 ShadowColor=0,0,0,66
@@ -41,6 +43,7 @@ DriveFilepath=shell:::{20D04FE0-3AEA-1069-A2D8-08002B30309D}
 Username=USERNAME
 Affiliation=SCHALE
 MajSoulID=000000000
+BlueArchiveID=000000000
 
 [TextStyle]
 FontFace=Noto Sans
@@ -48,6 +51,18 @@ FontColor=0,0,0,255
 FontWeight=700
 StringAlign=Center
 AntiAlias=1
+
+[PopUpStyle]
+Meter=String
+FontFace=RSU
+FontSize=24
+FontColor=255,255,255,255
+H=40
+ClipString=1
+SolidColor=0,0,255,122
+StringAlign=LeftCenter
+AntiAlias=1
+Hidden=1
 
 [NoteStyle]
 Meter=String
