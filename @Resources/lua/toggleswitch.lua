@@ -1,5 +1,12 @@
 -- Small Lua script to cleanly hide/unhide all relevant Blue Archive widgets with a single button
 function Initialize()
+    -- The following values are extracted literally to avoid the edge case of rising to the top of the desktop
+    -- They may be assigned in the toggleswitch.ini configuration folder under [Variables]
+    X_POS = SKIN:GetVariable('XPos', 0)
+    Y_POS = SKIN:GetVariable('YPos', 0)
+    X_POS_MOVE = SKIN:GetVariable('XPosMove', 0)
+    Y_POS_MOVE = SKIN:GetVariable('YPosMove', 0)
+
     SKIN_LIST = { "BlueArchive\\Currency", "BlueArchive\\Energy", "BlueArchive\\Options", "BlueArchive\\Premium", "BlueArchive\\SchaleFolder", "BlueArchive\\RefreshButton",
         "BlueArchive\\SideApps\\Audio", "BlueArchive\\SideApps\\Discord", "BlueArchive\\SideApps\\RecycleBin", "BlueArchive\\SideApps\\Tasks",
         "BlueArchive\\TrayApps\\Applications", "BlueArchive\\TrayApps\\Emulators", "BlueArchive\\TrayApps\\Firefox",
@@ -11,19 +18,46 @@ function Initialize()
 end
 
 -- Hides/Unhides all relevant skins
-function ToggleCommand()
+function ToggleCommand(s)
     local f = FUNCTION_LIST[STATE + 1]
 
-    -- Fades in/out the skins
+    if s ~= nil and s ~= STATE then
+        return 0
+    end
+
     STATE = (STATE + 1) % 2
+
+    if s ~= nil then
+        f = FUNCTION_LIST[s + 1]
+        STATE = (s + 1) % 2
+    end
+
+    -- Fades in/out the skins
     for _, skin in ipairs(SKIN_LIST) do
         SKIN:Bang('!' .. f .. 'Fade', skin)
     end
+
+    -- Repositions the button
+    Adjust()
 
     -- changes the toggle icon
     SKIN:Bang('!ToggleMeter', 'ToggleOffImage')
     SKIN:Bang('!ToggleMeter', 'ToggleOnImage')
     SKIN:Bang('!ToggleMeter', 'ToggleHiddenHitbox')
     SKIN:Bang('!ToggleMeterGroup', 'ToggleBoxGroup')
+
+    if (STATE == 1) then
+        SKIN:Bang('!HideMeter', 'ToggleOnImage')
+        SKIN:Bang('!HideMeter', 'ToggleOnSwitch')
+        SKIN:Bang('!HideMeter', 'ToggleOnSwitchShadow')
+    end
+
+    return 1
+end
+
+-- Adjusts the skin relative to its original position
+-- NOTE: The "original position" is immutable; it does not change every call to the new position
+function Adjust()
+    SKIN:MoveWindow(X_POS + (X_POS_MOVE * STATE), Y_POS + (Y_POS_MOVE * STATE))
     return 1
 end
