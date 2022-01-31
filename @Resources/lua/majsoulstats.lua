@@ -19,7 +19,7 @@ function Initialize()
     RANK_STAR = { "I", "II" , "III" }
 
     -- Prepares global data storage
-    RANK_ID = 0
+    RANK_ID = 10101
     SCORE = 0
 
     -- Parses in-script; handles edge case of first-time usage of script
@@ -40,31 +40,34 @@ end
 
 -- Parses the sapk.json file for relevant data
 function ParseJSON()
-    -- Opens file to read
-    local filepath = SKIN:GetVariable('@') .. "/sapk.json"
-    local file = assert(io.open(filepath, "r"), "file not found or does not exist")
+    if pcall(function () -- Opens file to read
+        local filepath = SKIN:GetVariable('@') .. "/sapk.json"
+        local file = assert(io.open(filepath, "r"), "file not found or does not exist")
 
-    if (file == nil) then
-        return -1
+        if (file == nil) then
+            return -1
+        end
+
+        -- Reads .json file and erases all space characters
+        local data = file:read("*all")
+        data = data:gsub("%s+", "")
+
+        -- Closes file
+        file:close()
+
+        local currentstats = data:match("\"level\":{(.-)},")
+        -- Fetches rank ID
+        RANK_ID = currentstats:match("\"id\":(%d*),")
+
+        -- Fetches current ranking score
+        SCORE = currentstats:match("\"score\":(%d*),") + currentstats:match("\"delta\":(%-?%d*)")
+
+        -- print(SCORE .. "/" .. RankMax())
+    end) then
+        return 1
+    else
+        return 0
     end
-
-    -- Reads .json file and erases all space characters
-    local data = file:read("*all")
-    data = data:gsub("%s+", "")
-
-    -- Closes file
-    file:close()
-
-    local currentstats = data:match("\"level\":{(.-)},")
-    -- Fetches rank ID
-    RANK_ID = currentstats:match("\"id\":(%d*),")
-
-    -- Fetches current ranking score
-    SCORE = currentstats:match("\"score\":(%d*),") + currentstats:match("\"delta\":(%-?%d*)")
-
-    -- print(SCORE .. "/" .. RankMax())
-
-    return 0
 end
 
 -- Returns core rank ID
