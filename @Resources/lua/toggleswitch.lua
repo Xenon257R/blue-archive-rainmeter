@@ -7,13 +7,33 @@ function Initialize()
     X_POS_MOVE = SKIN:GetVariable('XPosMove', 0)
     Y_POS_MOVE = SKIN:GetVariable('YPosMove', 0)
 
-    SKIN_LIST = { "BlueArchive\\Currency", "BlueArchive\\Energy", "BlueArchive\\Options", "BlueArchive\\Premium", "BlueArchive\\SchaleFolder", "BlueArchive\\RefreshButton",
-        "BlueArchive\\SideApps\\Audio", "BlueArchive\\SideApps\\Discord", "BlueArchive\\SideApps\\RecycleBin", "BlueArchive\\SideApps\\Tasks",
-        "BlueArchive\\TrayApps\\Applications", "BlueArchive\\TrayApps\\Emulators", "BlueArchive\\TrayApps\\Firefox",
-        "BlueArchive\\TrayApps\\KeePass", "BlueArchive\\TrayApps\\Steam", "BlueArchive\\TrayApps\\TorBrowser", "BlueArchive\\TrayApps\\VSCode",
-        "BlueArchive\\Tray", "BlueArchive\\UserBanner" }
+    -- Variants can be specified in the corresponding index in VARIANT_LIST
+    SKIN_LIST = {
+        "BlueArchive\\Currency",
+        "BlueArchive\\Energy",
+        "BlueArchive\\Options",
+        "BlueArchive\\Premium",
+        "BlueArchive\\SchaleFolder",
+        "BlueArchive\\RefreshButton",
+        "BlueArchive\\SideApps\\Audio",
+        "BlueArchive\\SideApps\\Discord",
+        "BlueArchive\\SideApps\\RecycleBin",
+        "BlueArchive\\SideApps\\Tasks",
+        "BlueArchive\\TrayApps\\Applications",
+        "BlueArchive\\TrayApps\\Emulators",
+        "BlueArchive\\TrayApps\\Firefox",
+        "BlueArchive\\TrayApps\\KeePass",
+        "BlueArchive\\TrayApps\\Steam",
+        "BlueArchive\\TrayApps\\TorBrowser",
+        "BlueArchive\\TrayApps\\VSCode",
+        "BlueArchive\\TrayApps\\AIMP",
+        "BlueArchive\\Tray",
+        "BlueArchive\\UserBanner"
+    }
 
-    FUNCTION_LIST = { "Hide", "Show" }
+    VARIANT_LIST = { [2] = "uptime.ini" }
+
+    FUNCTION_LIST = { "Deactivate", "Activate" }
     STATE = 0
 end
 
@@ -33,8 +53,12 @@ function ToggleCommand(s)
     end
 
     -- Fades in/out the skins
-    for _, skin in ipairs(SKIN_LIST) do
-        SKIN:Bang('!' .. f .. 'Fade', skin)
+    for i, skin in ipairs(SKIN_LIST) do
+        if VARIANT_LIST[i] ~= nil then
+            SKIN:Bang('!' .. f .. 'Config', skin, VARIANT_LIST[i])
+        else
+            SKIN:Bang('!' .. f .. 'Config', skin)
+        end
     end
 
     -- Repositions the button
