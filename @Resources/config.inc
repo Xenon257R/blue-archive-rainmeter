@@ -17,6 +17,7 @@ OptionsPadding=#SinglePadding#,0,0,0
 OptionsTextSize=16
 DropShadowOffset=3
 ShadowColor=0,0,0,66
+Click=[Play "#@#sound\UI_Button_Touch.wav"]
 ; ------------------------------
 ; File Directory String Literals
 ; ------------------------------
