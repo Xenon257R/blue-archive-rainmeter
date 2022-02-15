@@ -42,7 +42,8 @@ DriveFilepath=shell:::{20D04FE0-3AEA-1069-A2D8-08002B30309D}
 ; Miscellaneous
 ; ------------------------------
 Username=USERNAME
-Affiliation=SCHALE
+Academy=SCHALE
+Faction=Universal
 MajSoulID=000000000
 BlueArchiveID=000000000
 
@@ -70,12 +71,19 @@ Meter=String
 Hidden=1
 Group=NoteGroup
 ClipString=2
-FontFace=Noto Sans
-FontColor=0,0,0,255
-FontSize=12
-X=30  ; indent
-; H=25
-W=230
+FontFace=RSU
+FontColor=255,255,255,255
+FontSize=16
+X=10  ; indent
+H=25
+W=280
 FontWeight=100
 StringAlign=Left
 AntiAlias=1
+InlineSetting=Color | 80,197,249,255
+InlinePattern=(\[.*\])
+InlineSetting2=Color | 80,197,249,255
+InlinePattern2=([\d]*)
+InlineSetting3=Color | 80,197,249,255
+InlinePattern3=[\d]*([,\.])[\d]
+TrailingSpaces=1
