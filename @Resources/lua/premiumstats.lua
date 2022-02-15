@@ -1,5 +1,5 @@
-local function Randomizer(time, seed)
-    return math.floor(200 / (1000000 % (((seed * time) % 283) + 257)))
+local function Randomizer(time, seed, maxpulls)
+    return math.floor((1000000 % (((seed * time) % 283) + 257)) % maxpulls)
 end
 
 -- Formats a number string to have commas.
@@ -17,17 +17,47 @@ end
 
 function Initialize()
     TIME = math.floor(os.time() / 86400)
+
+    SELECTION = SKIN:GetVariable('Selection', 'BA')
+
+    GAME = {
+        BA = {
+            next = "AL",
+            seed = SKIN:GetVariable('BlueArchiveID', 0),
+            modifier = 120,
+            pity = 200,
+            image = "Common_Icon_Diamond"
+        },
+        AL = {
+            next = "BA",
+            seed = SKIN:GetVariable('AzurLaneID', 0),
+            modifier = 1,
+            pity = 200,
+            image = "Azur_Lane_Wisdom_Cube"
+        }
+    }
 end
 
-function GetGems(id)
-    return FormatIntString(Randomizer(TIME, id) * 120)
+function GetGems()
+    return FormatIntString(Randomizer(TIME, GAME[SELECTION]["seed"], GAME[SELECTION]["pity"]) * GAME[SELECTION]["modifier"])
 end
 
-function GetPulls(id)
-    local pulls = Randomizer(TIME, id)
+function GetPulls()
+    local pulls = Randomizer(TIME, GAME[SELECTION]["seed"], GAME[SELECTION]["pity"])
     local punctuation = "."
-    if (pulls >= 100) then
+    if (pulls >= (GAME[SELECTION]["pity"] / 2)) then
         punctuation = "!"
     end
-    return FormatIntString(Randomizer(TIME, id)) .. " allotted pulls today" .. punctuation
+    return FormatIntString(pulls) .. " allotted pulls today" .. punctuation
+end
+
+function GetImage()
+    return GAME[SELECTION]["image"]
+end
+
+function ToggleSelection()
+    SELECTION = GAME[SELECTION]["next"]
+    SKIN:Bang('!WriteKeyValue', 'Variables', 'Selection', SELECTION)
+
+    return 1
 end
