@@ -18,7 +18,7 @@ function Initialize()
         "BlueArchive\\SideApps\\Audio",
         "BlueArchive\\SideApps\\Discord",
         "BlueArchive\\SideApps\\RecycleBin",
-        "BlueArchive\\SideApps\\Tasks",
+        "BlueArchive\\SideApps\\Notes",
         "BlueArchive\\TrayApps\\Applications",
         "BlueArchive\\TrayApps\\Emulators",
         "BlueArchive\\TrayApps\\Firefox",
