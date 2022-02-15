@@ -15,52 +15,10 @@ local function Split(s, delimiter)
     return result, size
 end
 
--- Remove suffix stars for printing a note string
-local function Clean(string)
-    local maximum = 3
-
-    while maximum > 0 and string:sub(-1, -1) == "*" do
-        string = string:sub(1, -2)
-        maximum = maximum - 1
-    end
-
-    return string:sub(3)
-end
-
--- Removes prefixes and suffixes and returns the resulting note string
-local function FormatCheck()
-    local status = false
-
-    for i, line in ipairs(NOTES_LIST) do
-
-        if line:sub(2,2) ~= "|" and line ~= "" then
-            -- print("offender found")
-            NOTES_LIST[i] = "X|" .. line
-            status = true
-        end
-    end
-
-    return status
-end
-
--- Rewrites the notes.txt file with new changes
-local function Rewrite(filepath)
-    -- Re-open file to write
-    local file = assert(io.open(filepath, "w"), "file not found or does not exist")
-
-    for i, line in ipairs(NOTES_LIST) do
-        file:write(line)
-        if i < LENGTH then
-            file:write("\n")
-        end
-    end
-    file:close()
-end
-
 -- Reads the notes.txt file located in the @Resources folder
 local function Read()
     -- Opens file to read
-    local filepath = SKIN:GetVariable('@') .. "/notes.txt"
+    local filepath = SKIN:GetVariable('@') .. "notes\\" .. SELECTION .. ".txt"
     local file = assert(io.open(filepath, "r"), "file not found or does not exist")
 
     if (file == nil) then
@@ -74,25 +32,46 @@ local function Read()
     -- Closes file
     file:close()
 
-    if (FormatCheck()) then
-        Rewrite(filepath)
-    end
-
     return 1
 end
 
 function Initialize()
-    -- Opens file to read
-    Read()
 
     SCROLL = 0
-    BUFFER = 5
-    TOGGLE = 0
+    BUFFER = 7
+
+    NOTES = ""
+    NOTES_LIST = { }
+    NOTE_FILE_LIST = {
+        todo = "todo",
+    }
+    LENGTH = 0
+    SELECTION = SKIN:GetVariable('NoteSelection')
 end
 
--- Rereads the notes.txt file per update cycle
-function Update()
-    Read()
+-- Handles all Load functions for the specified Notes file
+function Load()
+    return Read()
+end
+
+-- Resets all Loaded information on the loaded Notes file
+function Reset()
+    SCROLL = 0
+    NOTES = ""
+    NOTES_LIST = { }
+    LENGTH = 0
+
+    return 1
+end
+
+-- Changes the currently selected Notes file
+function SwitchNotes()
+    SELECTION = NOTE_FILE_LIST[SELECTION]
+    SKIN:Bang('!SetOption', 'Variables', 'NoteSelection', SELECTION)
+    SKIN:Bang('!WriteKeyValue', 'Variables', 'NoteSelection', SELECTION)
+    Reset()
+    Load()
+    return 1
 end
 
 -- Returns the full content of the notes.txt file
@@ -112,76 +91,30 @@ function Scroll(direction)
     return 1
 end
 
--- Checks the status of the scroll amount of all the notes
-function CheckScroll(direction, invert)
-    invert = invert or 0
-    if TOGGLE == 0 then return 1 end
-    if direction < 0 and SCROLL <= 0 then
-        return (1 + invert) % 2
-    end
-    if direction > 0 and SCROLL >= LENGTH - BUFFER then
-        return (1 + invert) % 2
-    end
-    return invert
-end
-
--- Toggles the visibility settings of the Note bubble
-function SetToggle(t)
-    if t == nil then
-        TOGGLE = (TOGGLE + 1) % 2
-        return TOGGLE
-    end
-    TOGGLE = t
-    return TOGGLE
-end
-
 -- Returns the text string at the specified index
 function ReadLine(index)
     index = index + SCROLL
     local data = NOTES_LIST[index]
-    if data == nil or data == "" then return "---" end
+    if data == nil or data == "" then return " " end
 
-    return Clean(data)
+    return data
 end
 
--- Returns the Status attribute of the note at the specified index
-function CheckStatus(index)
-    index = index + SCROLL
-    local data = NOTES_LIST[index]
-    if data == nil or data == "" then return "" end
-
-    return data:sub(1, 1)
+-- Returns the currently selected Note file name
+function ReadHeader()
+    return SELECTION
 end
 
--- Returns the Difficulty attribute of the note at the specified index
-function CheckDifficulty(index)
-    index = index + SCROLL
-    local data = NOTES_LIST[index]
-    if data == nil or data == "" then return "" end
-
-    if data:sub(-3, -1) == "***" then return 3 end
-    if data:sub(-2, -1) == "**" then return 2 end
-    if data:sub(-1, -1) == "*" then return 1 end
-
-    return ""
-end
-
--- Changes the status marker of the note at the specified index
-function ChangeStatus(index, modifier)
-    modifier = modifier or 1
-    index = index + SCROLL
-
-    local data = NOTES_LIST[index]
-    if data == nil or data == "" then return "" end
-
-    local num = tonumber(data:sub(1, 1))
-    num = (num + modifier) % 10
-    if num < 0 then
-        num = num + 10
+function UpContent()
+    if (LENGTH <= BUFFER) or (SCROLL == 0) then
+        return "0,0,0,0"
     end
-    NOTES_LIST[index] = num .. data:sub(2)
+    return "255,255,255,255"
+end
 
-    Rewrite(SKIN:GetVariable('@') .. "/notes.txt")
-
-    return ""
+function DownContent()
+    if (LENGTH <= BUFFER) or (SCROLL >= LENGTH - BUFFER) then
+        return "0,0,0,0"
+    end
+    return "255,255,255,255"
 end
