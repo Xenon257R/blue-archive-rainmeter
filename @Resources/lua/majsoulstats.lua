@@ -1,5 +1,24 @@
 -- Handles general statistics compilation of the Mahjong Soul fan site
 -- Credits to SAPikachu: https://github.com/SAPikachu/amae-koromo
+
+-- Checks rank point overflow edge case of JSON data
+local function CheckOverflow()
+    if (SCORE >= RankMax()) then
+        local rankup = RANK_MAX[((Rank() - 1) * 3) + RankStars() + 1]
+        SCORE = rankup / 2
+
+        local newstars = (RankStars() % 3) + 1
+        local newrank = Rank()
+        if (newstars == 1) then
+            newrank = newrank + 1
+        end
+        RANK_ID = 10000 + (newrank * 100) + newstars
+
+        return 1
+    end
+    return 0
+end
+
 -- NOTE: Changing configuration file will require app to refresh to take effect
 function Initialize()
     -- WARN: 3-player entries may work on a different master url. Re-check implementation when relevant
@@ -64,6 +83,7 @@ function ParseJSON()
 
         -- print(SCORE .. "/" .. RankMax())
     end) then
+        CheckOverflow()
         return 1
     else
         return 0
