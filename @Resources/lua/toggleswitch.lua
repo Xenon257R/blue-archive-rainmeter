@@ -28,7 +28,9 @@ function Initialize()
         "BlueArchive\\TrayApps\\VSCode",
         "BlueArchive\\TrayApps\\AIMP",
         "BlueArchive\\Tray",
-        "BlueArchive\\UserBanner"
+        "BlueArchive\\UpdateBanner",
+        "BlueArchive\\UserBanner",
+        "BlueArchive\\YouTubeBubble"
     }
 
     VARIANT_LIST = { [2] = "uptime.ini" }

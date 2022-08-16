@@ -29,11 +29,18 @@ function Initialize()
             image = "Common_Icon_Diamond"
         },
         AL = {
-            next = "BA",
+            next = "MJ",
             seed = SKIN:GetVariable('AzurLaneID', 0),
             modifier = 1,
             pity = 200,
             image = "Azur_Lane_Wisdom_Cube"
+        },
+        MJ = {
+            next = "BA",
+            seed = SKIN:GetVariable('MajSoulID', 0),
+            modifier = 1,
+            pity = 20, -- self-imposed pity, true pity is 150 (200 for special characters)
+            image = "Mahjong_Soul_Summoning_Scroll"
         }
     }
 end
@@ -45,10 +52,14 @@ end
 function GetPulls()
     local pulls = Randomizer(TIME, GAME[SELECTION]["seed"], GAME[SELECTION]["pity"])
     local punctuation = "."
+    local plural = ""
     if (pulls >= (GAME[SELECTION]["pity"] / 2)) then
         punctuation = "!"
     end
-    return FormatIntString(pulls) .. " allotted pulls today" .. punctuation
+    if (pulls ~= 1) then
+        plural = "s"
+    end
+    return FormatIntString(pulls) .. " allotted pull" .. plural .. " today" .. punctuation
 end
 
 function GetImage()
