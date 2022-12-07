@@ -1,89 +1,75 @@
 -- Small Lua script to cleanly hide/unhide all relevant Blue Archive widgets with a single button
+
+-- Returns stringified file content located in [filepath]
+local function ReadFile(filepath)
+    filepath = SKIN:MakePathAbsolute(filepath)
+
+    local file = io.open(filepath)
+    if not file then
+        print('Unable to open file at ' .. filepath)
+        return
+    end
+
+    local contents = file:read('*all')
+    file:close()
+
+    return contents
+end
+
+-- Fetches channel data from db.json located in the respective skin folder
+local function FetchDatabase()
+    local contents = ReadFile(SKIN:GetVariable('@') .. 'json/layout.json')
+    if not contents then return end
+
+    local jsonarray = JSON.parse(contents)
+
+    local db = {}
+    local count = 0
+
+    for k, v in ipairs(jsonarray.data) do
+        table.insert(db, { skin = v.skin } )
+        count = count + 1
+
+        if v.variant and v.variant ~= "" then
+            db[count].variant = v.variant
+        end
+    end
+
+    return db, count, jsonarray
+end
+
 function Initialize()
-    -- The following values are extracted literally to avoid the edge case of rising to the top of the desktop
-    -- They may be assigned in the toggleswitch.ini configuration folder under [Variables]
-    X_POS = SKIN:GetVariable('XPos', 0)
-    Y_POS = SKIN:GetVariable('YPos', 0)
-    X_POS_MOVE = SKIN:GetVariable('XPosMove', 0)
-    Y_POS_MOVE = SKIN:GetVariable('YPosMove', 0)
-
+    JSON = dofile(SKIN:GetVariable('@') .. 'lua/json.lua')
     -- Variants can be specified in the corresponding index in VARIANT_LIST
-    SKIN_LIST = {
-        "BlueArchive\\Currency",
-        "BlueArchive\\Energy",
-        "BlueArchive\\Options",
-        "BlueArchive\\Premium",
-        "BlueArchive\\SchaleFolder",
-        "BlueArchive\\RefreshButton",
-        "BlueArchive\\SideApps\\Audio",
-        "BlueArchive\\SideApps\\Discord",
-        "BlueArchive\\SideApps\\RecycleBin",
-        "BlueArchive\\SideApps\\Notes",
-        "BlueArchive\\TrayApps\\Applications",
-        "BlueArchive\\TrayApps\\Emulators",
-        "BlueArchive\\TrayApps\\Firefox",
-        "BlueArchive\\TrayApps\\KeePass",
-        "BlueArchive\\TrayApps\\Steam",
-        "BlueArchive\\TrayApps\\TorBrowser",
-        "BlueArchive\\TrayApps\\VSCode",
-        "BlueArchive\\TrayApps\\AIMP",
-        "BlueArchive\\Tray",
-        "BlueArchive\\UpdateBanner",
-        "BlueArchive\\UserBanner",
-        "BlueArchive\\YouTubeBubble"
-    }
-
-    VARIANT_LIST = { [2] = "uptime.ini" }
+    SKIN_LIST, _, _ = FetchDatabase()
 
     FUNCTION_LIST = { "Deactivate", "Activate" }
     STATE = 0
 end
 
 -- Hides/Unhides all relevant skins
-function ToggleCommand(s)
+function ToggleCommand(st)
     local f = FUNCTION_LIST[STATE + 1]
 
-    if s ~= nil and s ~= STATE then
+    if st ~= nil and st ~= STATE then
         return 0
     end
 
     STATE = (STATE + 1) % 2
 
-    if s ~= nil then
-        f = FUNCTION_LIST[s + 1]
-        STATE = (s + 1) % 2
+    if st ~= nil then
+        f = FUNCTION_LIST[st + 1]
+        STATE = (st + 1) % 2
     end
 
     -- Fades in/out the skins
-    for i, skin in ipairs(SKIN_LIST) do
-        if VARIANT_LIST[i] ~= nil then
-            SKIN:Bang('!' .. f .. 'Config', skin, VARIANT_LIST[i])
+    for i, s in ipairs(SKIN_LIST) do
+        if s.variant ~= nil then
+            SKIN:Bang('!' .. f .. 'Config', s.skin, s.variant .. '.ini')
         else
-            SKIN:Bang('!' .. f .. 'Config', skin)
+            SKIN:Bang('!' .. f .. 'Config', s.skin)
         end
     end
 
-    -- Repositions the button
-    Adjust()
-
-    -- changes the toggle icon
-    SKIN:Bang('!ToggleMeter', 'ToggleOffImage')
-    SKIN:Bang('!ToggleMeter', 'ToggleOnImage')
-    SKIN:Bang('!ToggleMeter', 'ToggleHiddenHitbox')
-    SKIN:Bang('!ToggleMeterGroup', 'ToggleBoxGroup')
-
-    if (STATE == 1) then
-        SKIN:Bang('!HideMeter', 'ToggleOnImage')
-        SKIN:Bang('!HideMeter', 'ToggleOnSwitch')
-        SKIN:Bang('!HideMeter', 'ToggleOnSwitchShadow')
-    end
-
-    return 1
-end
-
--- Adjusts the skin relative to its original position
--- NOTE: The "original position" is immutable; it does not change every call to the new position
-function Adjust()
-    SKIN:MoveWindow(X_POS + (X_POS_MOVE * STATE), Y_POS + (Y_POS_MOVE * STATE))
     return 1
 end

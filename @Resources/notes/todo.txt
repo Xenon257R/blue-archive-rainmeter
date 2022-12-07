@@ -1,5 +1,8 @@
-> Modify the configuration files!
-  - @Resources\config.inc
-  - Add custom [.txt] files
-  - Set XPos/YPos for hide mode
-  - Double-check everything
+> Setup your tray!
+> Edit your databases:
+  > ToggleSwitch
+  > EventBanner
+  > YouTubeBubble
+  > Notes
+  > Premiums
+  > Manga Folder

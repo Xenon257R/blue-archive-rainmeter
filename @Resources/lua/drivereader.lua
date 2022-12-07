@@ -48,6 +48,9 @@ end
 
 -- Returns the current Driver that is selected
 function CurrentDrive()
+    if not isdir(CURRENT_DRIVER) then
+        NextDrive()
+    end
     return CURRENT_DRIVER
 end
 
@@ -75,6 +78,6 @@ function NextDrive()
     end
 
     CURRENT_DRIVER = DRIVER_LIST[1]
-    print("New Driver:" .. CURRENT_DRIVER)
+    -- print("New Driver:" .. CURRENT_DRIVER)
     return 1
 end

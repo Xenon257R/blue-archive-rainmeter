@@ -1,0 +1,1 @@
+{"data":[{"enable":true, "filename":"todo", "name":"Todo", "sensitive":false}], "struct":[{"label":"name", "type":"string"}, {"label":"filename", "type":"string"}, {"label":"sensitive", "type":"boolean"}, {"label":"enable", "type":"boolean"}]}

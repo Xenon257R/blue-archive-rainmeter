@@ -1,5 +1,41 @@
-local function Randomizer(time, seed, maxpulls)
-    return math.floor((1000000 % (((seed * time) % 283) + 257)) % maxpulls)
+-- Small script to handle premium calculations.
+local function Randomizer(time, seed, maximum, increment)
+    return (math.floor((1000000 % (((seed * time) % 283) + 257)) % (maximum / increment))) * increment
+end
+
+-- Returns stringified file content located in [filepath]
+local function ReadFile(filepath)
+    filepath = SKIN:MakePathAbsolute(filepath)
+
+    local file = io.open(filepath)
+    if not file then
+        print('Unable to open file at ' .. filepath)
+        return
+    end
+
+    local contents = file:read('*all')
+    file:close()
+
+    return contents
+end
+
+local function FetchDatabase()
+    local contents = ReadFile(SKIN:GetVariable('@') .. 'json/premium.json')
+    if not contents then return end
+
+    local jsonarray = JSON.parse(contents)
+
+    local db = {}
+    local count = 0
+
+    for k, v in ipairs(jsonarray.data) do
+        if v.enable then
+            table.insert(db, { id = v.id, seed = v.seed, maximum = v.maximum, pullcost = v.pullcost, increment = v.increment, image = v.image, key = k } )
+            count = count + 1
+        end
+    end
+
+    return db, count, jsonarray
 end
 
 -- Formats a number string to have commas.
@@ -16,58 +52,47 @@ function FormatIntString(number)
 end
 
 function Initialize()
+    JSON = dofile(SKIN:GetVariable('@') .. 'lua/json.lua')
+
     TIME = math.floor(os.time() / 86400)
 
-    SELECTION = SKIN:GetVariable('Selection', 'BA')
+    GAME, TOTAL_GAMES, _ = FetchDatabase()
 
-    GAME = {
-        BA = {
-            next = "AL",
-            seed = SKIN:GetVariable('BlueArchiveID', 0),
-            modifier = 120,
-            pity = 200,
-            image = "Common_Icon_Diamond"
-        },
-        AL = {
-            next = "MJ",
-            seed = SKIN:GetVariable('AzurLaneID', 0),
-            modifier = 1,
-            pity = 200,
-            image = "Azur_Lane_Wisdom_Cube"
-        },
-        MJ = {
-            next = "BA",
-            seed = SKIN:GetVariable('MajSoulID', 0),
-            modifier = 1,
-            pity = 20, -- self-imposed pity, true pity is 150 (200 for special characters)
-            image = "Mahjong_Soul_Summoning_Scroll"
-        }
-    }
+    SELECTION = tonumber(SKIN:GetVariable('Selection', 1))
+
+    if (SELECTION > TOTAL_GAMES) then ToggleSelection(1) end
+
+    return 1
 end
 
 function GetGems()
-    return FormatIntString(Randomizer(TIME, GAME[SELECTION]["seed"], GAME[SELECTION]["pity"]) * GAME[SELECTION]["modifier"])
+    return FormatIntString(Randomizer(TIME, GAME[SELECTION].seed, GAME[SELECTION].maximum, GAME[SELECTION].increment))
 end
 
 function GetPulls()
-    local pulls = Randomizer(TIME, GAME[SELECTION]["seed"], GAME[SELECTION]["pity"])
+    local pulls = math.floor(Randomizer(TIME, GAME[SELECTION].seed, GAME[SELECTION].maximum, GAME[SELECTION].increment) / GAME[SELECTION].pullcost)
     local punctuation = "."
     local plural = ""
-    if (pulls >= (GAME[SELECTION]["pity"] / 2)) then
+    if ((pulls * GAME[SELECTION].pullcost) >= (GAME[SELECTION].maximum / 2)) then
         punctuation = "!"
     end
     if (pulls ~= 1) then
         plural = "s"
     end
-    return FormatIntString(pulls) .. " allotted pull" .. plural .. " today" .. punctuation
+    return FormatIntString(pulls) .. " lucky pull" .. plural .. " today" .. punctuation
 end
 
 function GetImage()
-    return GAME[SELECTION]["image"]
+    return GAME[SELECTION].image
 end
 
-function ToggleSelection()
-    SELECTION = GAME[SELECTION]["next"]
+function ToggleSelection(param)
+    if (param ~= nil) then
+        SELECTION = param
+    else
+        SELECTION = (SELECTION % TOTAL_GAMES) + 1
+    end
+
     SKIN:Bang('!WriteKeyValue', 'Variables', 'Selection', SELECTION)
 
     return 1
