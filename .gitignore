@@ -1,3 +1,8 @@
 .vscode
-@Resources/sapk.json
 @Resources/notes/*
+!@Resources/notes/todo.txt
+DownloadFile/
+*_old.*
+devnotes.txt
+# TrayApps/*
+# !TrayApps/MusicApp/
