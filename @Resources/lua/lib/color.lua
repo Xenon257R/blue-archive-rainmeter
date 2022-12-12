@@ -83,6 +83,8 @@ local function RGBToHSV(red, green, blue)
 	return hue, saturation * 100, value * 100
 end
 
+-- Generates and returns a full color set given an RGBA string "r,g,b,a"
+-- Returns multiple values in order of R, G, B, H, S, V, A, HEX as individual values, NOT A TABLE
 local function fullSet(rgba)
     local rgba = rgba or '0,0,0,0'
     local colorstring = {}
@@ -91,10 +93,7 @@ local function fullSet(rgba)
         table.insert(colorstring, i)
     end
 
-    local red = colorstring[1]
-    local green = colorstring[2]
-    local blue = colorstring[3]
-    local alpha = colorstring[4]
+    local red, green, blue, alpha = colorstring[1], colorstring[2], colorstring[3], colorstring[4]
 
     local hue, saturation, value = RGBToHSV(red, green, blue)
     
@@ -112,29 +111,32 @@ function color.new(rgba_string)
     return o
 end
 
+-- Returns hex string prepended by [prefix] if given
 function color:getHex(prefix)
 	prefix = prefix or ''
 
 	return prefix .. self.x
 end
 
+-- Returns color values requested from [typetable]
+-- EXAMPLE: If a [typetable] of { g, b, r } is passed for #ff0000, it will return the STRING '0,0,255'
+-- NOTE: HEX requests are best done as a independent request (i.e. { x })
 function color:getValues(typetable)
     local data = {}
     for k, v in ipairs(typetable) do
-        if v == 'x' then
-            return self[v]
-        else
-            table.insert(data, math.floor(self[v]))
-        end
+        table.insert(data, math.floor(self[v]))
     end
 
     return table.concat(data, ',')
 end
 
+-- Returns a "normalized" color value to be used in a 2D spectrum
 function color:getBase()
     return HSVToRGB(self.h, 100, 100)
 end
 
+-- Changes the stored [color] values to [newval]
+-- NOTES: [modifier] refers to the adjustment between different ranges such as [0-100] to [0-255] and [colortype] specifies between RGB or HSV
 function color:setValue(newval, modifier, colortype)
     local oldval = self[colortype]
 
@@ -165,10 +167,11 @@ function color:setValue(newval, modifier, colortype)
     return oldval
 end
 
+-- Overrides stored [color] values to the newly passed [rgba_string]
 function color:setAll(rgba_string)
     self.r, self.g, self.b, self.h, self.s, self.v, self.a, self.x = fullSet(rgba_string)
 
-    return 0
+    return 1
 end
 
 return color

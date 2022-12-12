@@ -10,6 +10,7 @@ local function exists(file)
             return true
         end
     end
+
     return ok, err
 end
 
@@ -22,19 +23,21 @@ end
 function Initialize()
     DRIVER_LIST = { "C:", "D:", "E:", "F:", "G:", "H:", "I:", "J:", "K:", "L:" }
     DRIVER_COUNT = 10
-    FORMAT_LIST = { B = 1, KB = 1024, MB = 1048576, GB =  1073741824}
+    FORMAT_LIST = { '', 'K', 'M', 'G', 'T', 'P' }
 
     CURRENT_DRIVER = "C:"
 
-    -- for _, drive in ipairs(DRIVER_LIST) do
-    --     print(drive ..":")
-    -- end
+    return 1
 end
 
 -- Formats a number string to have commas.
 -- Credits to Bart Kiers from StackOverflow: https://stackoverflow.com/questions/10989788/format-integer-in-lua
 function FormatIntString(number, format)
-    number = math.floor(number / FORMAT_LIST[format])
+    local suffix = 1
+    while number >= 1000000 and suffix <= 6 do
+        number = number / 1024
+        suffix = suffix + 1
+    end
 
     local _, _, minus, int, fraction = tostring(number):find('([-]?)(%d+)([.]?%d*)')
 
@@ -43,7 +46,7 @@ function FormatIntString(number, format)
 
     -- reverse the int-string back remove an optional comma and put the
     -- optional minus and fractional part back
-    return minus .. int:reverse():gsub("^,", "") .. fraction
+    return minus .. int:reverse():gsub("^,", "") .. ' ' .. FORMAT_LIST[suffix] .. 'B'
 end
 
 -- Returns the current Driver that is selected
@@ -51,6 +54,7 @@ function CurrentDrive()
     if not isdir(CURRENT_DRIVER) then
         NextDrive()
     end
+
     return CURRENT_DRIVER
 end
 
@@ -78,6 +82,6 @@ function NextDrive()
     end
 
     CURRENT_DRIVER = DRIVER_LIST[1]
-    -- print("New Driver:" .. CURRENT_DRIVER)
+
     return 1
 end

@@ -44,8 +44,8 @@ local function FetchTree(filepath)
 end
 
 function Initialize()
-    COLOR = dofile(SKIN:GetVariable('@') .. 'lua/color.lua')
-    JSON = dofile(SKIN:GetVariable('@') .. 'lua/json.lua')
+    COLOR = dofile(SKIN:GetVariable('@') .. 'lua/lib/color.lua')
+    JSON = dofile(SKIN:GetVariable('@') .. 'lua/lib/json.lua')
     FILEPATH = SKIN:GetVariable('@') .. 'json/presets.json'
 
     CURRENT = {
@@ -125,7 +125,7 @@ function GetValues(typestring, index)
         return table.concat(zeroes, ',')
     end
 
-    -- An xtremely strange edge case exists where DefaultValue cannot seem to pass non-numeric arguments
+    -- NOTE: An extremely strange edge case exists where DefaultValue cannot seem to pass non-numeric arguments
     local typetable = {}
     local num_table = { ['1'] = 'r', ['2'] = 'g', ['3'] = 'b', ['4'] = 'h', ['5'] = 's', ['6'] = 'v', ['7'] = 'a', ['8'] = 'x', r = 'r', g = 'g', b = 'b', h = 'h', s = 's', v = 'v', a = 'a', x = 'x' }
 
@@ -251,7 +251,6 @@ end
 function ApplyChanges()
     for k,v in pairs(CURRENT) do
         for k2, v2 in ipairs(v) do
-            -- print(v2.value:getValues({ "r", "g", "b", "a" }))
             SKIN:Bang('!WriteKeyValue', 'Variables', v2.var, v2.value:getValues({ "r", "g", "b", "a" }), SKIN:GetVariable('@') .. 'config.inc')
         end
     end
