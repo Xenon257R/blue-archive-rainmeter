@@ -2,7 +2,5 @@
 @Resources/notes/*
 !@Resources/notes/todo.txt
 DownloadFile/
-*_old.*
+*_old*
 devnotes.txt
-# TrayApps/*
-# !TrayApps/MusicApp/
