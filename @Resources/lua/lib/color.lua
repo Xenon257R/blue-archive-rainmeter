@@ -1,4 +1,5 @@
--- CITATION: https://gist.github.com/GigsD4X/8513963
+-- CITATIONS: https://gist.github.com/GigsD4X/8513963
+--            https://www.rapidtables.com/convert/color/rgb-to-hsv.html
 local function HSVToRGB(hue, saturation, value)
 	-- Returns the RGB equivalent of the given HSV-defined color
 	-- (adapted from some code found around the web)
@@ -36,51 +37,46 @@ local function HSVToRGB(hue, saturation, value)
 	end
 end
 
--- CITATION: https://gist.github.com/GigsD4X/8513963
+-- CITATIONS: https://gist.github.com/GigsD4X/8513963
+--            https://www.rapidtables.com/convert/color/rgb-to-hsv.html
 local function RGBToHSV(red, green, blue)
 	-- Returns the HSV equivalent of the given RGB-defined color
 	-- (adapted from some code found around the web)
 
+	local modr, modg, modb = red / 255, green / 255, blue / 255
 	local hue, saturation, value
 
-	local min_value = math.min( red, green, blue )
-	local max_value = math.max( red, green, blue )
-
-    -- VALUE adjustment
-	value = max_value / 255
+	local min_value = math.min( modr, modg, modb )
+	local max_value = math.max( modr, modg, modb )
 
 	local value_delta = max_value - min_value
 
-	-- If the color is not black
-	if max_value ~= 0 then
-		saturation = value_delta / max_value
-
-	-- If the color is purely black
+	if modr == max_value then
+		hue = ((( modg - modb ) / value_delta) % 6)
+	elseif modg == max_value then
+		hue = 2 + ( modb - modr ) / value_delta
 	else
-		saturation = 0
+		hue = 4 + ( modr - modg ) / value_delta
+	end
+
+	if value_delta == 0 then
 		hue = 0
-		return hue, saturation, value
-	end;
-
-	if red == max_value then
-		hue = ( green - blue ) / value_delta
-	elseif green == max_value then
-		hue = 2 + ( blue - red ) / value_delta
-	else
-		hue = 4 + ( red - green ) / value_delta
 	end
 
 	hue = hue * 60
-	if hue < 0 then
-		hue = hue + 360
+
+	-- if hue < 0 then
+	-- 	hue = hue + 360
+	-- end
+
+    if max_value == 0 then
+		saturation = 0
+		hue = 0
+	else
+		saturation = value_delta / max_value
 	end
 
-    if value_delta == 0 then
-        hue = 0
-        saturation = 0
-    end
-
-	return hue, saturation * 100, value * 100
+	return hue, saturation * 100, max_value * 100
 end
 
 -- Generates and returns a full color set given an RGBA string "r,g,b,a"
@@ -111,20 +107,15 @@ function color.new(rgba_string)
     return o
 end
 
--- Returns hex string prepended by [prefix] if given
-function color:getHex(prefix)
-	prefix = prefix or ''
-
-	return prefix .. self.x
-end
-
 -- Returns color values requested from [typetable]
 -- EXAMPLE: If a [typetable] of { g, b, r } is passed for #ff0000, it will return the STRING '0,0,255'
 -- NOTE: HEX requests are best done as a independent request (i.e. { x })
 function color:getValues(typetable)
     local data = {}
     for k, v in ipairs(typetable) do
-        table.insert(data, math.floor(self[v]))
+		local val = self[v]
+		if type(val) == "number" then val = math.floor(val) end
+        table.insert(data, val)
     end
 
     return table.concat(data, ',')
@@ -138,6 +129,15 @@ end
 -- Changes the stored [color] values to [newval]
 -- NOTES: [modifier] refers to the adjustment between different ranges such as [0-100] to [0-255] and [colortype] specifies between RGB or HSV
 function color:setValue(newval, modifier, colortype)
+
+	-- Edge case for the Eyedropper tool. Assumes alpha is never passed
+	if colortype == 'rgb' then
+		local oldfullval = self.r .. ',' .. self.g .. ','  .. self.b .. ','  .. self.a
+		self.r, self.g, self.b, self.h, self.s, self.v, self.a, self.x = fullSet(newval .. ',' .. self.a)
+
+		return oldfullval
+	end
+
     local oldval = self[colortype]
 
     if colortype == 'x' then

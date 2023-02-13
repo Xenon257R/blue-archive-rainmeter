@@ -80,7 +80,7 @@ local function Setup()
 end
 
 function Initialize()
-    JSON = dofile(SKIN:GetVariable('@') .. 'lua/json.lua')
+    JSON = dofile(SKIN:GetVariable('@') .. 'lua/lib/json.lua')
 
     MANGA, TOTAL_MANGA, MANGA_JSON = FetchDatabase()
     CURRENT_DOWNLOAD = math.min(1, TOTAL_MANGA)
@@ -93,13 +93,20 @@ function Initialize()
     STATUS = { ongoing = "4,208,0,255", completed = "0,201,245,255", cancelled = "255,64,64,255", hiatus = "247,148,33,255" }
     STEP = { 0.00, 0.05, 0.15, 0.30, 0.50, 0.70, 0.85, 0.95, 1.00 }
     PULL = { 1, 1, 1 }
-    ERROR = { { msg = "Connection failed. Try again later.", display = "OFFLINE" }, { msg = "Download failed. Try again later.", display = "ERROR" } }
+
+    if TOTAL_MANGA >= 1 then
+        SKIN:Bang('!EnableMeasure', 'CoreModule')
+    else
+        Err(3)
+    end
 
     return 0
 end
 
 -- Generates the parent URL for the currently selected manga
 function GenerateMainURL()
+    if TOTAL_MANGA <=0 then return '' end
+
     return "https://api.mangadex.org/manga/" .. MANGA_JSON.data[MANGA[CURRENT_DOWNLOAD].key].id .. "?includes%5B%5D=cover_art"
 end
 
@@ -191,13 +198,15 @@ end
 
 -- Returns the URL to the selected manga's cover art
 function GenerateCoverURL()
-    if not MANGA[CURRENT_DOWNLOAD].coverid then return "" end
+    if TOTAL_MANGA <= 0 or not MANGA[CURRENT_DOWNLOAD].coverid then return "" end
 
     return "https://uploads.mangadex.org/covers/" .. MANGA_JSON.data[MANGA[CURRENT_DOWNLOAD].key].id .. "/" .. MANGA[CURRENT_DOWNLOAD].coverid
 end
 
 -- Returns the URL to make an API call for the most recent chapter of the currently selected manga
 function GenerateChapterURL()
+    if TOTAL_MANGA <= 0 then return '' end
+
     return "https://api.mangadex.org/chapter?manga=" .. MANGA_JSON.data[MANGA[CURRENT_DOWNLOAD].key].id .. "&limit=1&translatedLanguage%5B%5D=" .. LANGUAGE .. "&order%5B" .. SORT_PARAM[SORT_SELECT] .. "%5D=desc"
 end
 
@@ -208,7 +217,7 @@ end
 
 -- Returns the parsed filename from the CoverArt API call
 function GenerateFilename()
-    if not MANGA[CURRENT_DOWNLOAD].coverid then return '' end
+    if TOTAL_MANGA <= 0 or not MANGA[CURRENT_DOWNLOAD].coverid then return '' end
 
     return MANGA[CURRENT_DOWNLOAD].coverid
 end
@@ -223,7 +232,7 @@ end
 -- Returns the currently selected manga's name
 function GetName(index)
     local s = math.min(math.max(SELECTED + tonumber(index), 1),TOTAL_MANGA)
-    if not MANGA[s].name then return "MangaDex" end
+    if TOTAL_MANGA <= 0 or not MANGA[s].name then return "MangaDex" end
 
     return MANGA[s].name
 end
@@ -231,7 +240,7 @@ end
 -- Returns the currently selected manga's cover image name
 function GetCoverImage(index)
     local s = math.min(math.max(SELECTED + tonumber(index), 1),TOTAL_MANGA)
-    if not MANGA[s].coverid then return "" end
+    if TOTAL_MANGA <= 0 or not MANGA[s].coverid then return "" end
 
     return SKIN:GetVariable('CURRENTPATH') .. "DownloadFile/" .. MANGA[s].coverid
 end
@@ -239,7 +248,7 @@ end
 -- Returns the currently selected manga's latest chapter number
 function GetLatestChapter(index)
     local s = math.min(math.max(SELECTED + tonumber(index), 1),TOTAL_MANGA)
-    if not MANGA[s].chapter then return "0" end
+    if TOTAL_MANGA <= 0 or not MANGA[s].chapter then return "0" end
 
     return MANGA[s].chapter
 end
@@ -247,7 +256,7 @@ end
 -- Returns the currently selected manga's URL
 function GetLatestChapterLink(index)
     local s = math.min(math.max(SELECTED + tonumber(index), 1),TOTAL_MANGA)
-    if not MANGA[s].link then return '' end
+    if TOTAL_MANGA <= 0 or not MANGA[s].link then return '' end
 
     return MANGA[s].link
 end
@@ -255,7 +264,7 @@ end
 -- Returns the currently selected manga's publication status
 function GetStatus(index)
     local s = math.min(math.max(SELECTED + tonumber(index), 1),TOTAL_MANGA)
-    if not MANGA[s].status then return "130,130,130,255" end
+    if TOTAL_MANGA <= 0 or not MANGA[s].status then return "130,130,130,255" end
 
     return MANGA[s].status
 end
@@ -263,7 +272,7 @@ end
 -- Returns whether the currently selected manga is read or not
 function GetRead(index)
     local s = math.min(math.max(SELECTED + tonumber(index), 1),TOTAL_MANGA)
-    if not MANGA[s].chapter or not MANGA_JSON.data[MANGA[s].key].lastread then return 0 end
+    if TOTAL_MANGA <= 0 or not MANGA[s].chapter or not MANGA_JSON.data[MANGA[s].key].lastread then return 0 end
 
     if MANGA[s].chapter == MANGA_JSON.data[MANGA[s].key].lastread then return 255 end
 
@@ -311,9 +320,10 @@ end
 
 -- Prints an error message
 function Err(code)
-    print(ERROR[tonumber(code)].msg)
+    local error = { { msg = "Connection failed. Try again later.", display = "OFFLINE" }, { msg = "Download failed. Try again later.", display = "ERROR" }, { msg = "No manga entries. Maybe you want to use schalefolder.ini instead?", display = "EMPTY" } }
+    print(error[tonumber(code)].msg)
 
-    SKIN:Bang('!SetOption', 'TotalEntries', 'Text', ERROR[tonumber(code)].display)
+    SKIN:Bang('!SetOption', 'TotalEntries', 'Text', error[tonumber(code)].display)
     SKIN:Bang('!UpdateMeter', 'TotalEntries')
 
     return 0
@@ -326,7 +336,7 @@ function ClearCache()
         os.remove(SKIN:GetVariable('CURRENTPATH') .. "DownloadFile/" .. v)
     end
 
-    MANGA_JSON.cache = JSON.null
+    MANGA_JSON.cache = {}
     WriteFile(SKIN:GetVariable('@') .. 'json/manga.json', JSON.stringify(MANGA_JSON))
 
     return 0

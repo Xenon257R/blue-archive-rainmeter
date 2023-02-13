@@ -1,34 +1,3 @@
--- Returns stringified file content located in [filepath]
-local function ReadFile(filepath)
-    filepath = SKIN:MakePathAbsolute(filepath)
-
-    local file = io.open(filepath)
-    if not file then
-        print('Unable to open file at ' .. filepath)
-        return
-    end
-
-    local contents = file:read('*all')
-    file:close()
-
-    return contents
-end
-
-local function WriteFile(filepath, content)
-    filepath = SKIN:MakePathAbsolute(filepath)
-
-    local file = io.open(filepath, "w")
-    if not file then
-        print('Unable to open file at ' .. filepath)
-        return
-    end
-
-    file:write(content)
-    file:close()
-
-    return 1
-
-end
 
 local function SetBlurb(msg)
     if msg then
@@ -43,32 +12,15 @@ local function SetBlurb(msg)
     return 1
 end
 
-local function FetchTree(filepath)
-    local contents = ReadFile(filepath)
-    if not contents then return end
-
-    local jsonarray = JSON.parse(contents)
-    local count = 0
-    local entries = 0
-    local track_changes = {}
-
-    for k, v in pairs(jsonarray.struct) do
-        count = count + 1
-    end
-
-    for k,v in pairs(jsonarray.data) do
-        entries = entries + 1
-        table.insert(track_changes, "old")
-    end
-    
-    return jsonarray.struct, count, entries, jsonarray, track_changes
-end
-
 function Initialize()
-    JSON = dofile(SKIN:GetVariable('@') .. 'lua/json.lua')
-    FILEPATH = SKIN:GetVariable('@') .. 'json/' .. SKIN:GetVariable('JSON') .. '.json'
+    JSON = dofile(SKIN:GetVariable('@') .. 'lua/lib/jsonhandler.lua')
 
-    FIELDS, NUM_FIELDS, NUM_ENTRIES, FULL_ARRAY, TRACK_CHANGES = FetchTree(FILEPATH)
+    FILEPATH = SKIN:GetVariable('@') .. 'json/' .. SKIN:GetVariable('JSON') .. '.json'
+    DATA = JSON.readFile(FILEPATH)
+    FIELDS = DATA.struct
+    NUM_FIELDS = table.getn(DATA.struct)
+    NUM_ENTRIES = table.getn(DATA.data)
+
     SELECTION = 1
     BUFFER = 0
     BUFFER_AMOUNT = 7
@@ -110,31 +62,31 @@ end
 function GetFieldEntry(index)
     if (tonumber(index) > NUM_FIELDS) then return '' end
 
-    if not FULL_ARRAY.data[SELECTION][FIELDS[tonumber(index)].label] then return "<empty>" end
-    if FULL_ARRAY.data[SELECTION][FIELDS[tonumber(index)].label] == "" then return "<empty>" end
+    if not DATA.data[SELECTION] then return "" end
+    if not DATA.data[SELECTION][FIELDS[tonumber(index)].label] or DATA.data[SELECTION][FIELDS[tonumber(index)].label] == "" then return "<empty>" end
 
-    return FULL_ARRAY.data[SELECTION][FIELDS[tonumber(index)].label]
+    return DATA.data[SELECTION][FIELDS[tonumber(index)].label]
 end
 
 function GetFieldBoolean(index)
     if (tonumber(index) > NUM_FIELDS) then return 0 end
 
-    if not FULL_ARRAY.data[SELECTION][FIELDS[tonumber(index)].label] then return 0 end
+    if not DATA.data[SELECTION] or not DATA.data[SELECTION][FIELDS[tonumber(index)].label] then return 0 end
 
     return 1
 end
 
 function GetName(index)
     index = tonumber(index)
-    if not FULL_ARRAY.data[BUFFER + index] or not FULL_ARRAY.data[BUFFER + index].name then return '' end
-    if FULL_ARRAY.data[BUFFER + index].name == '' then return '[Untitled]' end
+    if not DATA.data[BUFFER + index] or not DATA.data[BUFFER + index].name then return '' end
+    if DATA.data[BUFFER + index].name == '' then return '[Untitled]' end
 
-    return FULL_ARRAY.data[BUFFER + index].name
+    return DATA.data[BUFFER + index].name
 end
 
 function GetHighlight(index)
     index = tonumber(index)
-    if not FULL_ARRAY.data[BUFFER + index] then return "0,0,0,0" end
+    if not DATA.data[BUFFER + index] then return "0,0,0,0" end
 
     if BUFFER + index == SELECTION then return SKIN:GetVariable("HighlightColor") end
 
@@ -183,18 +135,19 @@ function IsChanged()
 end
 
 function IsEnabled(index)
-    if not FULL_ARRAY.data[BUFFER + tonumber(index)] then return "0,0,0,0," end
+    if not DATA.data[BUFFER + tonumber(index)] then return "0,0,0,0" end
 
-    if FULL_ARRAY.data[BUFFER + tonumber(index)].enable then return SKIN:GetVariable("TextColor") end
+    if DATA.data[BUFFER + tonumber(index)].enable then return SKIN:GetVariable("TextColor") end
 
     return "180,180,180,255"
 end
 
 function RemoveSelect()
-    local name = FULL_ARRAY.data[SELECTION].name
+    local name = DATA.data[SELECTION].name
 
-    table.remove(FULL_ARRAY.data, SELECTION)
-    table.remove(TRACK_CHANGES, SELECTION)
+    if name == '' then name = '[Untitled]' end
+
+    table.remove(DATA.data, SELECTION)
     
     NUM_ENTRIES = NUM_ENTRIES - 1
     SELECTION = math.min(math.max(SELECTION, 1), NUM_ENTRIES)
@@ -204,14 +157,13 @@ function RemoveSelect()
 end
 
 function CreateNew()
-    table.insert(FULL_ARRAY.data, SELECTION + 1, JSON.null)
-    table.insert(TRACK_CHANGES, SELECTION + 1, "new")
+    table.insert(DATA.data, SELECTION + 1, {})
 
     NUM_ENTRIES = NUM_ENTRIES + 1
     SELECTION = SELECTION + 1
 
     for k, v in pairs(FIELDS) do
-        FULL_ARRAY.data[SELECTION][v.label] = TYPE_DEFAULT[v.type]
+        DATA.data[SELECTION][v.label] = TYPE_DEFAULT[v.type]
     end
 
     MADE_CHANGES = true
@@ -221,49 +173,46 @@ end
 function MoveBack()
     if SELECTION <= 1 or NUM_ENTRIES <= 1 then return -1 end
 
-    FULL_ARRAY.data[SELECTION], FULL_ARRAY.data[SELECTION - 1] = FULL_ARRAY.data[SELECTION - 1], FULL_ARRAY.data[SELECTION]
+    DATA.data[SELECTION], DATA.data[SELECTION - 1] = DATA.data[SELECTION - 1], DATA.data[SELECTION]
 
     SELECTION = SELECTION - 1
 
     MADE_CHANGES = true
-    return SetBlurb("Moved " .. FULL_ARRAY.data[SELECTION].name .. " up 1 index.")
+    return SetBlurb("Moved " .. DATA.data[SELECTION].name .. " up 1 index.")
 end
 
 function MoveForward()
     if SELECTION >= NUM_ENTRIES or NUM_ENTRIES <= 1 then return -1 end
 
-    FULL_ARRAY.data[SELECTION], FULL_ARRAY.data[SELECTION + 1] = FULL_ARRAY.data[SELECTION + 1], FULL_ARRAY.data[SELECTION]
+    DATA.data[SELECTION], DATA.data[SELECTION + 1] = DATA.data[SELECTION + 1], DATA.data[SELECTION]
 
     SELECTION = SELECTION + 1
 
     MADE_CHANGES = true
-    return SetBlurb("Moved " .. FULL_ARRAY.data[SELECTION].name .. " down 1 index.")
+    return SetBlurb("Moved " .. DATA.data[SELECTION].name .. " down 1 index.")
 end
 
 function SetValue(value, index)
-    FULL_ARRAY.data[SELECTION][FIELDS[tonumber(index)].label] = value
-    TRACK_CHANGES[SELECTION] = "changed"
+    if NUM_ENTRIES <= 0 then return -1 end
+
+    DATA.data[SELECTION][FIELDS[tonumber(index)].label] = value
 
     MADE_CHANGES = true
-    return SetBlurb("Changed " .. FULL_ARRAY.data[SELECTION].name .. "'s [" .. FIELDS[tonumber(index)].label .. "] parameter.")
+    return SetBlurb("Changed " .. DATA.data[SELECTION].name .. "'s [" .. FIELDS[tonumber(index)].label .. "] parameter.")
 end
 
 function ToggleBoolean(index)
-    if not FIELDS[tonumber(index)].type == "boolean" then return -1 end
+    if NUM_ENTRIES <= 0 or not FIELDS[tonumber(index)].type == "boolean" then return -1 end
 
-    FULL_ARRAY.data[SELECTION][FIELDS[tonumber(index)].label] = not FULL_ARRAY.data[SELECTION][FIELDS[tonumber(index)].label]
+    DATA.data[SELECTION][FIELDS[tonumber(index)].label] = not DATA.data[SELECTION][FIELDS[tonumber(index)].label]
 
     MADE_CHANGES = true
-    local current_state = FULL_ARRAY.data[SELECTION][FIELDS[tonumber(index)].label] and 1 or 0
-    return SetBlurb(BOOL_CHANGE_STRING[current_state + 1] .. " " .. FULL_ARRAY.data[SELECTION].name .. "'s [" .. FIELDS[tonumber(index)].label .. "] parameter.")
+    local current_state = DATA.data[SELECTION][FIELDS[tonumber(index)].label] and 1 or 0
+    return SetBlurb(BOOL_CHANGE_STRING[current_state + 1] .. " " .. DATA.data[SELECTION].name .. "'s [" .. FIELDS[tonumber(index)].label .. "] parameter.")
 end
 
 function SaveChanges()
-    WriteFile(FILEPATH, JSON.stringify(FULL_ARRAY))
-
-    for k, _ in ipairs(TRACK_CHANGES) do
-        TRACK_CHANGES[k] = "old"
-    end
+    JSON.writeFile(FILEPATH, DATA)
 
     MADE_CHANGES = false
     return SetBlurb("Saved all changes!")

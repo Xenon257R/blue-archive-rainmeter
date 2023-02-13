@@ -1,1 +1,28 @@
-{"struct":[{"label":"name", "type":"string"}, {"label":"use_name", "type":"boolean"}, {"label":"id", "type":"string"}, {"label":"lastread", "type":"string"}, {"label":"enable", "type":"boolean"}], "data":[{"use_name":true, "name":"Handyman 68", "id":"5fcf0847-7d3a-4164-a705-970a06df2794", "lastread":"0", "enable":true}], "cache":{"5fcf0847-7d3a-4164-a705-970a06df2794":"a2ac6edd-3901-493f-b9b7-eea52b14968d.png"}}
+{
+    "struct": [
+        {
+            "label": "name",
+            "type": "string"
+        },
+        {
+            "label": "use_name",
+            "type": "boolean"
+        },
+        {
+            "label": "id",
+            "type": "string"
+        },
+        {
+            "label": "lastread",
+            "type": "string"
+        },
+        {
+            "label": "enable",
+            "type": "boolean"
+        }
+    ],
+    "data": [
+    ],
+    "cache": {
+    }
+}

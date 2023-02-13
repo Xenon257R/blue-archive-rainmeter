@@ -1,4 +1,5 @@
 > Setup your tray!
+> Customize the suite's style!
 > Edit your databases:
   > ToggleSwitch
   > EventBanner

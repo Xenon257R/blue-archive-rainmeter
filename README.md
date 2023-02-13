@@ -6,7 +6,6 @@ Before use, it is advised to carefully read through every skin's **Information**
 ## Feature List
 - Primary Banner displaying user level (decorative)
   - Variant: Weather display (uses [Weather.com](https://weather.com)'s API)
-  - Variant: *MahjongSoul* Rank display (uses the [Amae Koromo API](https://github.com/SAPikachu/amae-koromo))
 - Battery life display
   - Variant: Login duration display (partially decorative)
 - Free storage space counter
@@ -16,18 +15,20 @@ Before use, it is advised to carefully read through every skin's **Information**
   - Includes *Rainmeter*, *Wallpaper Engine* and *Visual Settings* as defaults
 - Master **Refresh** button
 - Master **ToggleSwitch** button
+  - Requires child button **ToggleOn** (on by default) to function properly
 - Desktop (Sticky) Notes
 - Audio visualizer (can be toggled)
 - Discord shortcut
-- Recycle Bin/Bag shortcut
+- Recycle Bin shortcut
 - Mini Audio Player (collapsible)
 - **File Explorer** shortcut
   - Variant: Manga tracker (uses the [Mangadex API](https://api.mangadex.org/docs/)) - still doubles as a **File Explorer** shortcut
-- Steam Events marquee (uses the [Steam News Hub RSS Feed](https://store.steampowered.com/news/))
+- Steam Events marquee (uses the [Steam News Hub RSS Feed](https://store.steampowered.com/feeds/news/))
 - YouTube Channel uploads marquee (uses the YouTube RSS Feed)
 - Large taskbar tray
-  - Includes a *Rainmeter* icon that can be used as a template
+  - Includes a *S.C.H.A.L.E.* icon that can be used as a template
   - Includes Date & Time
+  - Includes Master Audio App (of those supported by _Rainmeter_)
 
 ## Customization
 
@@ -36,6 +37,7 @@ This suite comes with built-in UIs to simplify the process of personalizing the 
 `.json` files located under `@Resources\json\` hold databases that will require editing for various components. You may edit these files in an IDE or text editor manually, but a UI has been built to streamline this process for people unfamiliar with `.json` file formats or coding in general. This UI can be accessed by opening up the Context Menu of the appropriate Skin and clicking on the option _Edit Database_. The importance of these databases may vary depending on what features of the suite you choose to use. The skins that have relevant databases are as follows:
 
 - ToggleSwitch\toggleswitch.ini
+  - ToggleSwitch\ToggleOn\toggleon.ini
 - SchaleFolder\mangafolder.ini
 - Premium\premium.ini
 - YouTubeBubble\bubble.ini
@@ -46,7 +48,7 @@ Settings beyond those provided by the UIs will require personal coding experienc
 
 ## Additional Notes
 
-The preset that comes with the `.rmskin` package will assume you have a 16:9 resolution. This does not mean it will not work otherwise; it will just load up with poor formatting, and it is up to you to adjust the position of skins to your specifications. Some skins such as the taskbar tray may require finer adjustments.
+The preset that comes with the `.rmskin` package will assume you have a 16:9 resolution and scale to your active window's height. This does not mean it will not work otherwise; it will just load up with subpar formatting, and it is up to you to adjust the position of skins to your specifications. Some skins such as the taskbar tray may require finer adjustments.
 
 To reduce network consumption, every skin that connects to the internet to download information will only do it once in bulk during Rainmeter's startup. As such, displayed information such as a *YouTube* channel's latest upload should not be treated as live feed. You may manually force an information update by using the **Refresh** button, toggling on and off the suite using the **ToggleSwitch** button or refreshing Rainmeter as a whole.
 - The one exception to this rule is the **Primary Banner**, which updates on its own once every hour (minute if the variant is the **User Level**).

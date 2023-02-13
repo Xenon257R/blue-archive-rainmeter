@@ -3,14 +3,22 @@
 ; -------------------------
 ; Desktop Resolution (16:9)
 ; -------------------------
-; NOTE: Common resolutions: 1536 (0.8),2560 (1.33~)
 ; BaseWidth=1920
 ; DesiredWidth=1920
-GScale=1*(#SCREENAREAWIDTH#/1920)
+GScale=1*(#WORKAREAWIDTH#/1920)
 ; ---------------
 ; Global Elements
 ; ---------------
-DropShadowOffset=(5*#GScale#)
+; NOTE: [ShadowAngle] is strictly an "Editor only" variable. If this variable is directly tampered with,
+; this variable will have no effect whatsoever until [colorsettings.ini] "applies" it and modifies
+; the [ShadowX] and [ShadowY] values appropriately.
+ShadowAngle=315
+ShadowX=1
+ShadowY=1
+ShadowDepth=5
+SX=(#ShadowX#*#ShadowDepth#*#GScale#)
+SY=(#ShadowY#*#ShadowDepth#*#GScale#)
+DropShadowOffset=(#ShadowDepth#*#GScale#)
 Click=[Play "#@#sound\UI_Button_Touch.wav"]
 ; --------
 ; Hitboxes
@@ -38,12 +46,13 @@ C3=167,248,255,255
 C4=255,255,255,255
 C5=47,80,109,255
 C6=255,255,255,255
-CS=47,80,109,255
-CharmColor=247,168,187,255
-; CharmColor=237,138,74,255
-; CharmColor=247,172,207,255
-; CharmColor=224,88,17,255
-; CharmColor=255,58,60,255
+C7=47,80,109,255
+C8=247,168,187,255
+CharmBorderColor=110,25,67,255
+StopColor=239,64,67,255
+StopBorderColor=100,10,10,255
+OffColor=122,122,122,255
+OffBorderColor=61,61,61,255
 ; ------
 TrayColor=255,255,255,222
 ShadowColor=0,0,0,66
@@ -52,10 +61,11 @@ TextColor=32,60,93,255
 PopUpColor=31,64,101,222
 PopUpTextColor=255,255,255,255
 HighlightColor=50,201,255,255
+PopUpCap=Round
 ; ------
 PrimaryFont=Noto Sans
 SecondaryFont=RSU
-MusicPlayerName=AIMP
+FancyFont=Fredoka One
 SkewX=-10
 SkewY=0
 Roundness=5

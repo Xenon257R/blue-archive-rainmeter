@@ -1,1 +1,25 @@
-{"data":[{"id":593110, "name":"Steam News", "enable":true}, {"id":1675200, "name":"Steam Deck", "enable":false}], "struct":[{"type":"string", "label":"name"}, {"type":"number", "label":"id"}, {"type":"boolean", "label":"enable"}]}
+{
+    "struct": [
+        {
+            "label": "name",
+            "type": "string"
+        },
+        {
+            "label": "id",
+            "type": "number"
+        },
+        {
+            "label": "enable",
+            "type": "boolean"
+        }
+    ],
+    "data": [
+        {
+            "id": 593110,
+            "name": "Steam News",
+            "enable": true
+        }
+    ],
+    "cache": {
+    }
+}
