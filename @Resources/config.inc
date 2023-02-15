@@ -10,8 +10,8 @@ GScale=1*(#WORKAREAWIDTH#/1920)
 ; Global Elements
 ; ---------------
 ; NOTE: [ShadowAngle] is strictly an "Editor only" variable. If this variable is directly tampered with,
-; this variable will have no effect whatsoever until [colorsettings.ini] "applies" it and modifies
-; the [ShadowX] and [ShadowY] values appropriately.
+; it will have no effect whatsoever until [colorsettings.ini] "applies" it and modifies the
+; [ShadowX] and [ShadowY] values appropriately.
 ShadowAngle=315
 ShadowX=1
 ShadowY=1
@@ -64,8 +64,7 @@ HighlightColor=50,201,255,255
 PopUpCap=Round
 ; ------
 PrimaryFont=Noto Sans
-SecondaryFont=RSU
-FancyFont=Fredoka One
+SecondaryFont=Source Sans Pro
 SkewX=-10
 SkewY=0
 Roundness=5
@@ -97,7 +96,7 @@ AntiAlias=1
 [PopUpStyle]
 Meter=String
 FontFace=#SecondaryFont#
-FontSize=(28*#GScale#)
+FontSize=(24*#GScale#)
 FontColor=#PopUpTextColor#
 H=(50*#GScale#)
 ClipString=1

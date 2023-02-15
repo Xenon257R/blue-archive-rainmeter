@@ -29,11 +29,11 @@ local function generateDefault()
         BarColor2 = "255,255,255,255",
         TextColor = "32,60,93,255",
         PrimaryFont="Noto Sans",
-        SecondaryFont="RSU",
+        SecondaryFont="Source Sans Pro",
         PopUpCap="Round",
         SkewX="-10",
         Roundness="5",
-        ShadowAngle="45"
+        ShadowAngle="315"
     }
 end
 
@@ -240,7 +240,15 @@ function GetValues(typestring, index)
     return CURRENT[SELECTION][index].value:getValues(typetable)
 end
 
-function GetStyleValue(index)
+function GetStyleValue(index, compare)
+    if compare then
+        if CURRENT["style"][tonumber(index)].value == compare then
+            return 1
+        end
+
+        return 0
+    end
+
     return CURRENT["style"][tonumber(index)].value
 end
 
@@ -297,7 +305,7 @@ function SetStyleValue(value, index, increment)
 
     -- angle calculation
     if index == 6 then
-        local x, y = generateOffsets(CURRENT["style"][tonumber(index)].value)
+        local x, y = generateOffsets(tonumber(CURRENT["style"][tonumber(index)].value))
         print("Offsets: " .. x .. ", " .. y)
         SKIN:Bang('!SetVariable', 'ShadowX', x)
         SKIN:Bang('!SetVariable', 'ShadowY', y)
@@ -397,7 +405,7 @@ function ApplyChanges()
             if k == "style" then
                 SKIN:Bang('!WriteKeyValue', 'Variables', v2.var, v2.value, SKIN:GetVariable('@') .. 'config.inc')
                 if v2.var == "ShadowAngle" then
-                    local x, y = generateOffsets(v2.value)
+                    local x, y = generateOffsets(tonumber(v2.value))
                     SKIN:Bang('!WriteKeyValue', 'Variables', "ShadowX", x, SKIN:GetVariable('@') .. 'config.inc')
                     SKIN:Bang('!WriteKeyValue', 'Variables', "ShadowY", y, SKIN:GetVariable('@') .. 'config.inc')
                 end
