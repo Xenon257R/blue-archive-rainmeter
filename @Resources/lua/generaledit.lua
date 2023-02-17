@@ -317,7 +317,7 @@ function SetStyleValue(value, index, increment)
 end
 
 function LoadPreset()
-    local preset_list = DATA.presets[PRESET_SELECTION]
+    local preset_list = DATA.presets[PRESET_SELECTION] or generateDefault()
 
     for k, v in pairs(CURRENT) do
         for k2, v2 in ipairs(v) do
@@ -367,12 +367,13 @@ end
 function RemovePreset()
     if PRESET_SELECTION <= 0 or PRESET_SELECTION > INDEX_LIST.size then return -1 end
 
-    if PRESET_SELECTION == 1 then return 0 end
-
     table.remove(DATA.presets, PRESET_SELECTION)
     
     INDEX_LIST.size = INDEX_LIST.size - 1
+
     PRESET_SELECTION = math.max(PRESET_SELECTION - 1, 1)
+    if INDEX_LIST.size == 0 then PRESET_SELECTION = 0 end
+
     LoadPreset()
 
     SKIN:Bang('!UpdateMeterGroup', 'EditGroup')

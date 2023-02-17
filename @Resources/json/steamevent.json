@@ -1,18 +1,4 @@
 {
-    "struct": [
-        {
-            "label": "name",
-            "type": "string"
-        },
-        {
-            "label": "id",
-            "type": "number"
-        },
-        {
-            "label": "enable",
-            "type": "boolean"
-        }
-    ],
     "data": [
         {
             "id": 593110,
@@ -20,6 +6,18 @@
             "enable": true
         }
     ],
-    "cache": {
-    }
+    "struct": [
+        {
+            "type": "string",
+            "label": "name"
+        },
+        {
+            "type": "number",
+            "label": "id"
+        },
+        {
+            "type": "boolean",
+            "label": "enable"
+        }
+    ]
 }

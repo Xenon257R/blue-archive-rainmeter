@@ -1,4 +1,18 @@
 {
+    "data": [
+        {
+            "use_name": false,
+            "enable": true,
+            "name": "Blue Archive",
+            "id": "UCsrnDYrkovQhCCE8kwKcvKQ"
+        },
+        {
+            "id": "UCmgf8DJrAXFnU7j3u0kklUQ",
+            "use_name": true,
+            "name": "BA JP",
+            "enable": true
+        }
+    ],
     "struct": [
         {
             "label": "name",
@@ -16,21 +30,5 @@
             "label": "enable",
             "type": "boolean"
         }
-    ],
-    "data": [
-        {
-            "use_name": false,
-            "enable": true,
-            "name": "Blue Archive",
-            "id": "UCsrnDYrkovQhCCE8kwKcvKQ"
-        },
-        {
-            "use_name": true,
-            "enable": true,
-            "name": "BA JP",
-            "id": "UCmgf8DJrAXFnU7j3u0kklUQ"
-        }
-    ],
-    "cache": {
-    }
+    ]
 }

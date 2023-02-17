@@ -8,7 +8,7 @@ function jsonhandler.readFile(filepath)
 
     local file = io.open(filepath)
     if not file then
-        print('Unable to open file at ' .. filepath)
+        -- print('Unable to open file at ' .. filepath)
         return
     end
 
@@ -27,7 +27,7 @@ function jsonhandler.writeFile(filepath, contents)
 
     local file = io.open(filepath, "w")
     if not file then
-        print('Unable to open file at ' .. filepath)
+        -- print('Unable to open file at ' .. filepath)
         return
     end
 

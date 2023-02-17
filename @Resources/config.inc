@@ -71,18 +71,6 @@ Roundness=5
 Edgeround=(#Roundness#*#GScale#)
 FullSkew=#SkewX#,#SkewY#
 
-[TrayAppStyle]
-FontFace=#PrimaryFont#
-FontColor=#TextColor#
-FontSize=(18*#GScale#)
-X=(87.5*#GScale#)
-Y=(100*#GScale#)
-W=(175*#GScale#)
-ClipString=1
-FontWeight=700
-StringAlign=Center
-AntiAlias=1
-
 [SideAppStyle]
 FontFace=#PrimaryFont#
 FontColor=#TextColor#
