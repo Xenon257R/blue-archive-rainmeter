@@ -3,7 +3,7 @@ local function generateDefault()
         name = "<untl>",
         HighlightColor = "50,201,255,255",
         BrightHighlightColor = "80,255,255,255",
-        PopUpColor = "21,64,101,222",
+        PopUpColor = "31,64,101,222",
         BannerColor = "19,52,83,255",
         PopUpTextColor = "255,255,255,255",
         HeaderTextColor = "255,255,255,255",
@@ -38,6 +38,8 @@ local function generateDefault()
 end
 
 local function parseImport(importString)
+    importString = string.gsub(importString, '#', '-')
+    importString = string.gsub(importString, '\\_', ' ')
     local tokens = {}
     local newdata = {}
     local keytable = {
@@ -75,6 +77,7 @@ local function parseImport(importString)
         F = "Roundness",
         G = "ShadowAngle"
     }
+    local limits = { { 0, 0 }, { 0, 0 }, { 0, 0 }, { -20, 20 }, { 0, 20 }, { 0, 360 }  }
 
     for x in string.gmatch(importString, "(.-)&") do
         table.insert(tokens, x)
@@ -82,7 +85,8 @@ local function parseImport(importString)
 
     local newscheme = generateDefault()
 
-    newscheme.name = tokens[1] or '<impt>'
+    newscheme.name = tokens[1]
+    if newscheme.name == '' then newscheme.name = '<impt>' end
 
     for i = 1, string.len(tokens[2]), 9 do
         local higherdelim = string.sub(tokens[2], i, i + 8)
@@ -90,9 +94,13 @@ local function parseImport(importString)
         newscheme[keytable[string.sub(higherdelim, 1, 1)]] = tonumber("0x".. hexnum:sub(1,2)) .. ',' .. tonumber("0x".. hexnum:sub(3,4)) .. ',' .. tonumber("0x".. hexnum:sub(5,6))  .. ',' .. tonumber("0x".. hexnum:sub(7,8))
     end
 
-    for i = 3, 8 do
-        newscheme[keytable[string.sub(tokens[i], 1, 1)]] = string.gsub(string.sub(tokens[i], 2, -1), '_', ' ')
+    for i = 3, table.getn(tokens), 1 do
+        newscheme[keytable[string.sub(tokens[i], 1, 1)]] = string.sub(tokens[i], 2, -1)
     end
+
+    newscheme[keytable.E] = math.min(math.max(newscheme[keytable.E], -35), 35)
+    newscheme[keytable.F] = math.min(math.max(newscheme[keytable.F], 0), 20)
+    newscheme[keytable.G] = math.min(math.max(newscheme[keytable.G], 0), 360)
 
     return newscheme
 end
@@ -159,6 +167,17 @@ function Initialize()
     return 0
 end
 
+function SetBlurb(text)
+    SKIN:Bang('!SetOption', 'BlurbText', 'Text', text)
+    SKIN:Bang('!UpdateMeter', 'BlurbText')
+
+    return 1
+end
+
+function GetBlurb()
+    return BLURB
+end
+
 function GetSelectedNumber()
     return PRESET_SELECTION
 end
@@ -207,15 +226,18 @@ function GetPresetName(index)
     return DATA.presets[index].name
 end
 
--- Sets the name of the prest to the new [newname] value
-function SetPresetName(newname)
+-- Sets the name of the prest to the new [newName] value
+function SetPresetName(newName)
     if PRESET_SELECTION <= 0 or PRESET_SELECTION > INDEX_LIST.size then return -1 end
 
-    DATA.presets[PRESET_SELECTION].name = newname
+    local oldName = DATA.presets[PRESET_SELECTION].name
+    DATA.presets[PRESET_SELECTION].name = newName
+
+    SetBlurb("Changed preset name from [" .. oldName .. "] to [" .. newName .. "].")
 
     SKIN:Bang('!UpdateMeterGroup', 'EditGroup')
 
-    return 0
+    return oldName
 end
 
 function GetValues(typestring, index)
@@ -277,9 +299,12 @@ end
 function SetValue(value, modifier, colortype)
     if not CURRENT[SELECTION][COLOR_SELECTION] then return -1 end
 
+    local oldValue = CURRENT[SELECTION][COLOR_SELECTION].value:getValues({ "r", "g", "b", "a" })
     CURRENT[SELECTION][COLOR_SELECTION].value:setValue(value, tonumber(modifier), colortype)
 
     if PRESET_SELECTION > 0 then DATA.presets[PRESET_SELECTION][CURRENT[SELECTION][COLOR_SELECTION].var] = CURRENT[SELECTION][COLOR_SELECTION].value:getValues({ "r", "g", "b", "a" }) end
+
+    SetBlurb(CURRENT[SELECTION][COLOR_SELECTION].name .. "'s color changed from [" .. oldValue .. "] to [" .. CURRENT[SELECTION][COLOR_SELECTION].value:getValues({ "r", "g", "b", "a" }) .. "].")
 
     SKIN:Bang('!SetVariable', CURRENT[SELECTION][COLOR_SELECTION].var, CURRENT[SELECTION][COLOR_SELECTION].value:getValues({ "r", "g", "b", "a" }))
     SKIN:Bang('!UpdateMeterGroup', 'PreviewGroup')
@@ -288,7 +313,8 @@ function SetValue(value, modifier, colortype)
 end
 
 function SetStyleValue(value, index, increment)
-    local limits = { { 0, 0 }, { 0, 0 }, { 0, 0 }, { -35, 35 }, { 0, 20 }, { 0, 360 }  }
+    local limits = { { 0, 0 }, { 0, 0 }, { 0, 0 }, { -20, 20 }, { 0, 20 }, { 0, 360 }  }
+    local oldValue = CURRENT["style"][tonumber(index)].value
 
     if increment and value then
         CURRENT["style"][tonumber(index)].value = CURRENT["style"][tonumber(index)].value + value
@@ -310,6 +336,8 @@ function SetStyleValue(value, index, increment)
         SKIN:Bang('!SetVariable', 'ShadowX', x)
         SKIN:Bang('!SetVariable', 'ShadowY', y)
     end
+    
+    SetBlurb(CURRENT["style"][tonumber(index)].name .. " changed from [" .. oldValue .. "] to [" .. CURRENT["style"][tonumber(index)].value .. "].")
 
     SKIN:Bang('!UpdateMeterGroup', 'PreviewGroup')
 
@@ -335,6 +363,8 @@ function LoadPreset()
         end
     end
 
+    SetBlurb("Loaded [" .. preset_list.name .. "] preset.")
+
     SKIN:Bang('!UpdateMeterGroup', 'EditGroup')
     SKIN:Bang('!UpdateMeterGroup', 'PreviewGroup')
 
@@ -347,7 +377,7 @@ function SelectPreset(y)
 
     PRESET_SELECTION = newSelection
     LoadPreset()
-    SKIN:Bang('!UpdateMeterGroup', 'EditGroup')
+
     return 1
 end
 
@@ -357,6 +387,10 @@ function AddPreset(newvalues)
     table.insert(DATA.presets, default)
 
     INDEX_LIST.size = INDEX_LIST.size + 1
+    Scroll(INDEX_LIST.size)
+    SelectPreset((math.min(INDEX_LIST.size, 5)* 20) - 1)
+
+    SetBlurb("Created and selected new untitled default preset.")
 
     SKIN:Bang('!UpdateMeterGroup', 'EditGroup')
     SKIN:Bang('!UpdateMeterGroup', 'PreviewGroup')
@@ -366,6 +400,7 @@ end
 
 function RemovePreset()
     if PRESET_SELECTION <= 0 or PRESET_SELECTION > INDEX_LIST.size then return -1 end
+    local oldPreset = DATA.presets[PRESET_SELECTION].name
 
     table.remove(DATA.presets, PRESET_SELECTION)
     
@@ -375,6 +410,8 @@ function RemovePreset()
     if INDEX_LIST.size == 0 then PRESET_SELECTION = 0 end
 
     LoadPreset()
+
+    SetBlurb("Deleted " .. oldPreset .. " preset.")
 
     SKIN:Bang('!UpdateMeterGroup', 'EditGroup')
     SKIN:Bang('!UpdateMeterGroup', 'PreviewGroup')
@@ -390,12 +427,12 @@ function Scroll(num)
 end
 
 function SaveChanges()
-    if PRESET_SELECTION <= 0 or PRESET_SELECTION > INDEX_LIST.size then return -1 end
-
     JSON.writeFile(SKIN:GetVariable('@') .. 'json/presets.json', DATA)
 
     SKIN:Bang('!UpdateMeterGroup', 'EditGroup')
     SKIN:Bang('!UpdateMeterGroup', 'PreviewGroup')
+
+    SetBlurb("Saved all changes!")
 
     return 0
 end
@@ -422,6 +459,7 @@ function ApplyChanges()
 end
 
 function ExportPreset()
+    local reserved = "[_#&]+"
     local delim = "&"
     local keytable = {
         C1 = "a",
@@ -458,23 +496,38 @@ function ExportPreset()
         Roundness = "F",
         ShadowAngle = "G"
     }
+
+    if string.find(GetPresetName(), reserved) then
+        SetBlurb("Export failed. The selected preset is using one or more reserved characters: \"&\" and/or \"#\".")
+        return -1
+    end
+
     local presetString = GetPresetName() .. delim
     local styleString = ""
+
+    local defaultValues = generateDefault()
 
     for k, v in pairs(CURRENT) do
         if k ~= "style" then
             for k2, v2 in ipairs(v) do
-                presetString = presetString .. keytable[v2.var] .. v2.value:getValues({ "x" }) .. string.format("%x", v2.value:getValues({ "a" }))
+                if v2.value:getValues({ "r", "g", "b", "a" }) ~= defaultValues[v2.var] then presetString = presetString .. keytable[v2.var] .. v2.value:getValues({ "x" }) .. string.format("%x", v2.value:getValues({ "a" })) end
             end
         end
     end
     presetString = presetString .. delim
 
     for k, v in ipairs(CURRENT.style) do
-        presetString = presetString .. keytable[v.var] .. v.value .. delim
+        if string.find(v.value, reserved) then
+            SetBlurb("Export failed. The selected preset is using one or more reserved characters: \"&\" and/or \"#\".")
+            return -1
+        end
+        if v.value ~= defaultValues[v.var] then presetString = presetString .. keytable[v.var] .. v.value .. delim end
     end
 
-    presetString = string.gsub(presetString, " ", "_")
+    SetBlurb("Exported selected preset [" .. GetPresetName() .. "] onto clipboard.")
+
+    presetString = string.gsub(presetString, " ", "\\_")
+    presetString = string.gsub(presetString, "-", "#")
     return presetString
 end
 
@@ -483,12 +536,13 @@ function ImportPreset(importString)
 
     if not status then
         print("Bad import.")
+        SetBlurb("Imported string is incompatible or corrupted.")
         return -1
     end
 
     AddPreset(newvalues)
-    Scroll(INDEX_LIST.size)
-    SelectPreset((math.min(INDEX_LIST.size, 5)* 20) - 1)
+
+    SetBlurb("Successfully imported [" .. DATA.presets[PRESET_SELECTION].name .. "] preset.")
 
     return 1
 end
