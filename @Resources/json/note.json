@@ -1,12 +1,20 @@
 {
+    "data": [
+        {
+            "enable": true,
+            "file_id": 0,
+            "name": "Todo",
+            "sensitive": false
+        }
+    ],
     "struct": [
         {
             "type": "string",
             "label": "name"
         },
         {
-            "type": "string",
-            "label": "filename"
+            "type": "number",
+            "label": "file_id"
         },
         {
             "type": "boolean",
@@ -16,16 +24,5 @@
             "type": "boolean",
             "label": "enable"
         }
-    ],
-    "data": [
-        {
-            "enable": true,
-            "filename": "todo",
-            "name": "Todo",
-            "sensitive": false
-        }
-    ],
-    "cache": {
-        "todo": true
-    }
+    ]
 }
