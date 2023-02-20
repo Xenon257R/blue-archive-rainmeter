@@ -6,6 +6,8 @@ function Initialize()
     DATA = JSON.readFile(SKIN:GetVariable('@') .. 'json/layout.json')
     SKIN_LIST = JSON.filterEnabled(DATA.data)
 
+    table.insert(SKIN_LIST, { enable = true, variant = "toggleswitch", name = "Built-In Toggle", skin = "BlueArchive\\ToggleSwitch" })
+
     return 1
 end
 

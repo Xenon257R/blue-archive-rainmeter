@@ -53,6 +53,12 @@ function GetSaveColor()
     return SKIN:GetVariable('TextColor')
 end
 
+function IsOnlyNumber(index)
+    if not FIELDS[index] or FIELDS[index].type ~= "number" then return 0 end
+
+    return 1
+end
+
 function GetFieldName(index)
     if (tonumber(index) > NUM_FIELDS) then return '' end
 

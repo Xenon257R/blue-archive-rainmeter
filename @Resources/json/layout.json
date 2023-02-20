@@ -2,12 +2,6 @@
     "data": [
         {
             "enable": true,
-            "variant": "toggleswitch",
-            "name": "Toggle (Do Not Remove)",
-            "skin": "BlueArchive\\ToggleSwitch"
-        },
-        {
-            "enable": true,
             "variant": "weatherbanner",
             "name": "Primary Banner",
             "skin": "BlueArchive\\PrimaryBanner"
