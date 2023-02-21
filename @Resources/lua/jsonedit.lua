@@ -1,14 +1,8 @@
 
-local function SetBlurb(msg)
-    if msg then
-        BLURB = msg
-    elseif MADE_CHANGES then
-        BLURB = "You have unsaved changes."
-    else
-        BLURB = "No changes made."
-    end
+local function SetBlurb(text)
+    SKIN:Bang('!SetOption', 'BlurbText', 'Text', text)
+    SKIN:Bang('!UpdateMeter', 'BlurbText')
 
-    SKIN:Bang('!UpdateMeterGroup', 'EntryGroup')
     return 1
 end
 
@@ -26,6 +20,7 @@ function Initialize()
     BUFFER_AMOUNT = 7
     MADE_CHANGES = false
     BLURB = "No changes made."
+    TIP = 0
 
     TYPE_DEFAULT = { string = "", number = 0, boolean = false }
     BOOL_CHANGE_STRING = { "Disabled", "Enabled" }
@@ -124,7 +119,8 @@ function SetSelect(x)
     if newSelection > NUM_ENTRIES then return -1 end
 
     SELECTION = newSelection
-    SetBlurb()
+
+    SKIN:Bang('!UpdateMeterGroup', 'EntryGroup')
     return 1
 end
 
@@ -159,6 +155,8 @@ function RemoveSelect()
     SELECTION = math.min(math.max(SELECTION, 1), NUM_ENTRIES)
 
     MADE_CHANGES = true
+
+    SKIN:Bang('!UpdateMeterGroup', 'EntryGroup')
     return SetBlurb("Removed " .. name .. ".")
 end
 
@@ -173,6 +171,8 @@ function CreateNew()
     end
 
     MADE_CHANGES = true
+
+    SKIN:Bang('!UpdateMeterGroup', 'EntryGroup')
     return SetBlurb("Added new empty element at index " .. SELECTION .. ".")
 end
 
@@ -184,6 +184,8 @@ function MoveBack()
     SELECTION = SELECTION - 1
 
     MADE_CHANGES = true
+
+    SKIN:Bang('!UpdateMeterGroup', 'EntryGroup')
     return SetBlurb("Moved " .. DATA.data[SELECTION].name .. " up 1 index.")
 end
 
@@ -195,6 +197,8 @@ function MoveForward()
     SELECTION = SELECTION + 1
 
     MADE_CHANGES = true
+
+    SKIN:Bang('!UpdateMeterGroup', 'EntryGroup')
     return SetBlurb("Moved " .. DATA.data[SELECTION].name .. " down 1 index.")
 end
 
@@ -204,6 +208,8 @@ function SetValue(value, index)
     DATA.data[SELECTION][FIELDS[tonumber(index)].label] = value
 
     MADE_CHANGES = true
+
+    SKIN:Bang('!UpdateMeterGroup', 'EntryGroup')
     return SetBlurb("Changed " .. DATA.data[SELECTION].name .. "'s [" .. FIELDS[tonumber(index)].label .. "] parameter.")
 end
 
@@ -214,6 +220,8 @@ function ToggleBoolean(index)
 
     MADE_CHANGES = true
     local current_state = DATA.data[SELECTION][FIELDS[tonumber(index)].label] and 1 or 0
+
+    SKIN:Bang('!UpdateMeterGroup', 'EntryGroup')
     return SetBlurb(BOOL_CHANGE_STRING[current_state + 1] .. " " .. DATA.data[SELECTION].name .. "'s [" .. FIELDS[tonumber(index)].label .. "] parameter.")
 end
 
@@ -221,5 +229,17 @@ function SaveChanges()
     JSON.writeFile(FILEPATH, DATA)
 
     MADE_CHANGES = false
+
+    SKIN:Bang('!UpdateMeterGroup', 'EntryGroup')
     return SetBlurb("Saved all changes!")
+end
+
+function GenerateTip()
+    local rand = math.random(table.getn(DATA.tips) - 1)
+    if rand >= TIP then rand = rand + 1 end
+    SetBlurb(DATA.tips[rand])
+
+    TIP = rand
+
+    return 1
 end

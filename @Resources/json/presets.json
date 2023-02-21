@@ -216,5 +216,22 @@
             "SkewX": "0",
             "Roundness": "0"
         }
+    ],
+    "tips": [
+        "This Settings UI launches with no preset selected - it instead loads your active style.",
+        "You can copy presets or save an active, unsaved style by exporting it and importing it back in.",
+        "The eyedropper tool is not perfect; if you want two numerically equal colors it is best to transfer hex values.",
+        "You can scroll your mousewheel over numeric values to change them by ±1. The [Shadow Angle] will change by ±45.",
+        "All numeric values have minimum and maximum values. \"Bad\" values will automatically be clamped.",
+        "Third-party fonts still need to be manually installed! You can get there by clicking on the Folder icon.",
+        "Due to the nature of app icons, it is advised to not use transparency for its colors. You can still try it out.",
+        "A [Shadow Angle] value of 0 will instead put the shadow right underneath instead of at an angle of 0°/360°.",
+        "Due to Rainmeter's limitations, you cannot drag the color cursors around. You probably already tried. And failed.",
+        "Invalid or not-yet-installed fonts will be defaulted to Arial by Rainmeter.",
+        "You can navigate to different color sections by clicking on the elements in the top right section.",
+        "The Audio Visualizer skin has further style settings detached from this UI; find it in its context menu!",
+        "App Icons can have their color assignments rearranged through a UI accessed from their context menu.",
+        "\"&\" and \"#\" characters are reserved for export. They will work locally, but try to avoid using them overall.",
+        "Newly created/imported presets will always start with the default parameters and be automatically selected."
     ]
 }

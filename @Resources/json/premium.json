@@ -39,5 +39,12 @@
             "type": "boolean",
             "label": "enable"
         }
+    ],
+    "tips": [
+        "The image parameter will start its pathfinding from the [@Resources\\assets\\currency] directory. It will be most convenient to put new image assets there.",
+        "Some gacha games have multiple types of currencies for pulls. This widget is not smart enough to mix them, so you will have to pick one or make individual entries for each currency.",
+        "Some gacha games have discounted prices for multi-pulls. The best way to handle this is to set the [pullcost] to what a single pull would cost with the discount and set [increment] to the amount it takes for a multi-pull.",
+        "The [increment] value must be expressed in currency, not number of pulls.",
+        "You do not need to write in the exact values from the respective game into the fields. If for example you have a stash of 70,000 pyroxenes you're willing to spend, you can set that as the maximum!"
     ]
 }

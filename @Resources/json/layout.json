@@ -1,118 +1,126 @@
 {
+    "struct": [
+        {
+            "label": "name",
+            "type": "string"
+        },
+        {
+            "label": "skin",
+            "type": "string"
+        },
+        {
+            "label": "variant",
+            "type": "string"
+        },
+        {
+            "label": "enable",
+            "type": "boolean"
+        }
+    ],
     "data": [
         {
             "enable": true,
-            "variant": "weatherbanner",
+            "skin": "BlueArchive\\PrimaryBanner",
             "name": "Primary Banner",
-            "skin": "BlueArchive\\PrimaryBanner"
+            "variant": "weatherbanner"
         },
         {
             "enable": true,
+            "variant": "",
             "name": "Currency",
-            "skin": "BlueArchive\\Currency",
-            "variant": ""
+            "skin": "BlueArchive\\Currency"
         },
         {
             "enable": true,
+            "variant": "",
             "name": "Event Banner",
-            "skin": "BlueArchive\\EventBanner",
-            "variant": ""
+            "skin": "BlueArchive\\EventBanner"
         },
         {
             "enable": true,
+            "variant": "",
             "name": "YouTube",
-            "skin": "BlueArchive\\YouTubeBubble",
-            "variant": ""
+            "skin": "BlueArchive\\YouTubeBubble"
         },
         {
             "enable": true,
-            "variant": "uptime",
+            "skin": "BlueArchive\\Energy",
             "name": "Energy",
-            "skin": "BlueArchive\\Energy"
+            "variant": "uptime"
         },
         {
             "enable": true,
+            "variant": "",
             "name": "Options",
-            "skin": "BlueArchive\\Options",
-            "variant": ""
+            "skin": "BlueArchive\\Options"
         },
         {
             "enable": true,
-            "variant": "premium",
+            "skin": "BlueArchive\\Premium",
             "name": "Premium",
-            "skin": "BlueArchive\\Premium"
+            "variant": "premium"
         },
         {
             "enable": true,
-            "variant": "schalefolder",
+            "skin": "BlueArchive\\SchaleFolder",
             "name": "Schale Folder",
-            "skin": "BlueArchive\\SchaleFolder"
+            "variant": "schalefolder"
         },
         {
             "enable": true,
+            "variant": "",
             "name": "Refresh Button",
-            "skin": "BlueArchive\\RefreshButton",
-            "variant": ""
+            "skin": "BlueArchive\\RefreshButton"
         },
         {
             "enable": true,
+            "variant": "",
             "name": "Audio",
-            "skin": "BlueArchive\\SideApps\\Audio",
-            "variant": ""
+            "skin": "BlueArchive\\SideApps\\Audio"
         },
         {
             "enable": true,
+            "variant": "",
             "name": "Discord",
-            "skin": "BlueArchive\\SideApps\\Discord",
-            "variant": ""
+            "skin": "BlueArchive\\SideApps\\Discord"
         },
         {
             "enable": true,
+            "variant": "",
             "name": "Recycle Bin",
-            "skin": "BlueArchive\\SideApps\\RecycleBin",
-            "variant": ""
+            "skin": "BlueArchive\\SideApps\\RecycleBin"
         },
         {
             "enable": true,
+            "variant": "",
             "name": "Notes",
-            "skin": "BlueArchive\\SideApps\\Notes",
-            "variant": ""
+            "skin": "BlueArchive\\SideApps\\Notes"
         },
         {
             "enable": true,
+            "variant": "",
             "name": "Tray",
-            "skin": "BlueArchive\\Tray",
-            "variant": ""
+            "skin": "BlueArchive\\Tray"
         },
         {
             "enable": true,
-            "skin": "BlueArchive\\TrayApps\\App0",
+            "variant": "",
             "name": "App 0",
-            "variant": ""
+            "skin": "BlueArchive\\TrayApps\\App0"
         },
         {
             "enable": true,
-            "skin": "BlueArchive\\TrayApps\\MusicApp",
+            "variant": "musicapp",
             "name": "Music App",
-            "variant": "musicapp"
+            "skin": "BlueArchive\\TrayApps\\MusicApp"
         }
     ],
-    "struct": [
-        {
-            "type": "string",
-            "label": "name"
-        },
-        {
-            "type": "string",
-            "label": "skin"
-        },
-        {
-            "type": "string",
-            "label": "variant"
-        },
-        {
-            "type": "boolean",
-            "label": "enable"
-        }
+    "tips": [
+        "This is the MOST important database to maintain if you are using the ToggleSwitch. Remember to add every skin and the variant you use here so it gets properly switched on and off.",
+        "Remember to use backslash (\\) and not forwardslash (\/), and don't worry - Rainmeter automatically escapes the backslash so you don't (and shouldn't) type it twice.",
+        "The [Skin] parameter will start its pathfinding from the [Rainmeter\\Skins] folder which by default should be installed in [Documents].",
+        "The [Variant] field can be left empty if the skin has only one variant. Empty entries will be displayed as \"<empty>\".",
+        "For [Variant], you do NOT need to append your entry with [.ini].",
+        "The [ToggleSwitch] and [ToggleOn] skins are hardcoded to always be toggled; putting them in the database is an unnecessary redundancy."
     ]
 }
