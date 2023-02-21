@@ -21,7 +21,7 @@ function Initialize()
     NUM_FIELDS = table.getn(DATA.struct)
     NUM_ENTRIES = table.getn(DATA.data)
 
-    SELECTION = 1
+    SELECTION = math.min(1, NUM_ENTRIES)
     BUFFER = 0
     BUFFER_AMOUNT = 7
     MADE_CHANGES = false

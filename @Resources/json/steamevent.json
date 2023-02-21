@@ -1,11 +1,4 @@
 {
-    "data": [
-        {
-            "id": 593110,
-            "name": "Steam News",
-            "enable": true
-        }
-    ],
     "struct": [
         {
             "type": "string",
@@ -18,6 +11,13 @@
         {
             "type": "boolean",
             "label": "enable"
+        }
+    ],
+    "data": [
+        {
+            "id": 593110,
+            "name": "Steam News",
+            "enable": true
         }
     ]
 }

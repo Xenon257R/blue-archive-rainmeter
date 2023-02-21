@@ -2,6 +2,16 @@ local jsonhandler = {}
 
 local json = dofile(SKIN:GetVariable('@') .. 'lua/lib/json.lua')
 
+-- Parses a directly passed string
+function jsonhandler.parseRaw(contents)
+    return json.parse(contents)
+end
+
+-- Stringifies a directly passed string
+function jsonhandler.stringifyRaw(luaTable)
+    return json.stringify(luaTable)
+end
+
 -- Returns stringified file content located in [filepath]
 function jsonhandler.readFile(filepath)
     filepath = SKIN:MakePathAbsolute(filepath)
@@ -38,19 +48,21 @@ function jsonhandler.writeFile(filepath, contents)
 end
 
 -- filters [data] by the presence of positive [enable] flags
-function jsonhandler.filterEnabled(data)
-    local removelist = {}
+function jsonhandler.filterEnabled(data, limit, msg)
+    local n = 0
+    local filteredList = {}
     for k, v in ipairs(data) do
-        if not v.enable then
-            table.insert(removelist, 1, k)
+        if v.enable then
+            table.insert(filteredList, v)
+            n = n + 1
+            if limit and n >= limit then
+                print(limit .. '-entry limit reached, ignoring remaining entries. ' .. (msg or ''))
+                break
+            end
         end
     end
 
-    for k, v in ipairs(removelist) do
-        table.remove(data, v)
-    end
-
-    return data
+    return filteredList
 end
 
 return jsonhandler

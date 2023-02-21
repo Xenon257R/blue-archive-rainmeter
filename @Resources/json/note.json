@@ -2,27 +2,27 @@
     "data": [
         {
             "enable": true,
-            "file_id": 0,
-            "name": "Todo",
+            "file_id": "0",
+            "name": "TODO",
             "sensitive": false
         }
     ],
     "struct": [
         {
-            "type": "string",
-            "label": "name"
+            "label": "name",
+            "type": "string"
         },
         {
-            "type": "number",
-            "label": "file_id"
+            "label": "file_id",
+            "type": "number"
         },
         {
-            "type": "boolean",
-            "label": "sensitive"
+            "label": "sensitive",
+            "type": "boolean"
         },
         {
-            "type": "boolean",
-            "label": "enable"
+            "label": "enable",
+            "type": "boolean"
         }
     ]
 }

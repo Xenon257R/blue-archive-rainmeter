@@ -13,16 +13,10 @@
             "type": "string"
         },
         {
-            "label": "lastread",
-            "type": "string"
-        },
-        {
             "label": "enable",
             "type": "boolean"
         }
     ],
     "data": [
-    ],
-    "cache": {
-    }
+    ]
 }
