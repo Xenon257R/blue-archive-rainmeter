@@ -5,7 +5,7 @@
 ; -------------------------
 ; BaseWidth=1920
 ; DesiredWidth=1920
-GScale=1*(#WORKAREAWIDTH#/1920)
+GScale=1*(#SCREENAREAWIDTH#/1920)
 ; ---------------
 ; Global Elements
 ; ---------------
