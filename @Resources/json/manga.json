@@ -1,20 +1,21 @@
 {
+    "group": "Manga",
     "struct": [
         {
-            "label": "name",
-            "type": "string"
+            "type": "string",
+            "label": "name"
         },
         {
-            "label": "use_name",
-            "type": "boolean"
+            "type": "boolean",
+            "label": "use_name"
         },
         {
-            "label": "id",
-            "type": "string"
+            "type": "string",
+            "label": "id"
         },
         {
-            "label": "enable",
-            "type": "boolean"
+            "type": "boolean",
+            "label": "enable"
         }
     ],
     "data": [
@@ -22,6 +23,6 @@
     "tips": [
         "To adhere to the usage of the Mangadex API, there is an internal limit of 15 entries. Having more than 15 active manga entries will cause all manga entries beyond it to be ignored.",
         "A valid manga id is a hexadecimal string in the format:#CRLF#[********-****-****-****-************]#CRLF#You can extract it from the manga's Home Page URL.",
-        "The order of your entries matter! Put your favorite ones up top so they're the first pages rendered."
+        "The order of your entries matter! Put your favorite ones up top so they're the first pages in your list."
     ]
 }

@@ -1,2 +1,0 @@
-[Variables]
-Timeout=600

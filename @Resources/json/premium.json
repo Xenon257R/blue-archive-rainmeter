@@ -1,43 +1,44 @@
 {
+    "group": "Premium",
+    "struct": [
+        {
+            "label": "name",
+            "type": "string"
+        },
+        {
+            "label": "seed",
+            "type": "number"
+        },
+        {
+            "label": "maximum",
+            "type": "number"
+        },
+        {
+            "label": "increment",
+            "type": "number"
+        },
+        {
+            "label": "pullcost",
+            "type": "number"
+        },
+        {
+            "label": "image",
+            "type": "string"
+        },
+        {
+            "label": "enable",
+            "type": "boolean"
+        }
+    ],
     "data": [
         {
             "image": "Common_Icon_Diamond.png",
             "name": "BA",
-            "seed": "0",
+            "seed": 0,
             "enable": false,
-            "increment": "1200",
-            "maximum": "24000",
-            "pullcost": "120"
-        }
-    ],
-    "struct": [
-        {
-            "type": "string",
-            "label": "name"
-        },
-        {
-            "type": "number",
-            "label": "seed"
-        },
-        {
-            "type": "number",
-            "label": "maximum"
-        },
-        {
-            "type": "number",
-            "label": "increment"
-        },
-        {
-            "type": "number",
-            "label": "pullcost"
-        },
-        {
-            "type": "string",
-            "label": "image"
-        },
-        {
-            "type": "boolean",
-            "label": "enable"
+            "increment": 1200,
+            "maximum": 24000,
+            "pullcost": 120
         }
     ],
     "tips": [
@@ -45,6 +46,7 @@
         "Some gacha games have multiple types of currencies for pulls. This widget is not smart enough to mix them, so you will have to pick one or make individual entries for each currency.",
         "Some gacha games have discounted prices for multi-pulls. The best way to handle this is to set the [pullcost] to what a single pull would cost with the discount and set [increment] to the amount it takes for a multi-pull.",
         "The [increment] value must be expressed in currency, not number of pulls.",
-        "You do not need to write in the exact values from the respective game into the fields. If for example you have a stash of 70,000 pyroxenes you're willing to spend, you can set that as the maximum!"
+        "You do not need to write in the exact values from the respective game into the fields. If for example you have a stash of 70,000 pyroxenes you're willing to spend, you can set that as the maximum.",
+        "While this skin was built with gacha games in mind, you can use this skin's framework to loosely resolve any daily randomness with custom values such as a daily coinflip or your breakfast budget."
     ]
 }

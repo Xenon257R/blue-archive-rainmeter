@@ -1,4 +1,5 @@
 {
+    "group": "Steam",
     "struct": [
         {
             "type": "string",
@@ -22,6 +23,6 @@
     ],
     "tips": [
         "The Steam ID of a game is a numeric value that can be found in the game's Home Page URL. For example, Team Fortress 2's ID is [440].",
-        "Steam's RSS feed follows the same georestrictions as the game. Please double-check if the Steam game is available in your region before making an active entry for it."
+        "Steam's RSS feed follows the same georestrictions as the game. Double-check if the Steam game is available in your region before making an active entry for it."
     ]
 }

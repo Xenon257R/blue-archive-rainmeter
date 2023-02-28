@@ -1,4 +1,5 @@
 {
+    "group": "Toggle",
     "struct": [
         {
             "label": "name",
@@ -20,9 +21,9 @@
     "data": [
         {
             "enable": true,
-            "skin": "BlueArchive\\PrimaryBanner",
+            "variant": "weatherbanner",
             "name": "Primary Banner",
-            "variant": "weatherbanner"
+            "skin": "BlueArchive\\PrimaryBanner"
         },
         {
             "enable": true,
@@ -44,9 +45,9 @@
         },
         {
             "enable": true,
-            "skin": "BlueArchive\\Energy",
+            "variant": "uptime",
             "name": "Energy",
-            "variant": "uptime"
+            "skin": "BlueArchive\\Energy"
         },
         {
             "enable": true,
@@ -56,15 +57,15 @@
         },
         {
             "enable": true,
-            "skin": "BlueArchive\\Premium",
+            "variant": "premium",
             "name": "Premium",
-            "variant": "premium"
+            "skin": "BlueArchive\\Premium"
         },
         {
             "enable": true,
-            "skin": "BlueArchive\\SchaleFolder",
+            "variant": "schalefolder",
             "name": "Schale Folder",
-            "variant": "schalefolder"
+            "skin": "BlueArchive\\SchaleFolder"
         },
         {
             "enable": true,
@@ -117,10 +118,11 @@
     ],
     "tips": [
         "This is the MOST important database to maintain if you are using the ToggleSwitch. Remember to add every skin and the variant you use here so it gets properly switched on and off.",
-        "Remember to use backslash (\\) and not forwardslash (\/), and don't worry - Rainmeter automatically escapes the backslash so you don't (and shouldn't) type it twice.",
+        "Order matters! The script goes down the list, (de)activating each skin one by one, effectively ignoring any load order values you used in Rainmeter. Bottommost skins first, topmost skins last.",
+        "Use backslash (\\) and not forwardslash (\/). Rainmeter automatically escapes the backslash so you don't (and shouldn't) type it twice.",
         "The [Skin] parameter will start its pathfinding from the [Rainmeter\\Skins] folder which by default should be installed in [Documents].",
         "The [Variant] field can be left empty if the skin has only one variant. Empty entries will be displayed as \"<empty>\".",
-        "For [Variant], you do NOT need to append your entry with [.ini].",
-        "The [ToggleSwitch] and [ToggleOn] skins are hardcoded to always be toggled; putting them in the database is an unnecessary redundancy."
+        "For [Variant], do NOT to append your entry with [.ini].",
+        "The [ToggleSwitch] and [ToggleOn] skins have hardcoded behaviors to be enabled\/disabled; putting them in the database is an unnecessary redundancy."
     ]
 }

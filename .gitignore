@@ -1,6 +1,14 @@
 .vscode
+.luacheckrc
 @Resources/notes/*
 !@Resources/notes/todo.txt
 DownloadFile/
 *_old*
 devnotes.txt
+custom/
+browser/
+default/
+ignore/
+App*/
+!App0/
+!AppSettings/

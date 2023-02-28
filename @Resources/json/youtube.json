@@ -1,4 +1,23 @@
 {
+    "group": "YouTube",
+    "struct": [
+        {
+            "type": "string",
+            "label": "name"
+        },
+        {
+            "type": "boolean",
+            "label": "use_name"
+        },
+        {
+            "type": "string",
+            "label": "id"
+        },
+        {
+            "type": "boolean",
+            "label": "enable"
+        }
+    ],
     "data": [
         {
             "use_name": false,
@@ -7,33 +26,15 @@
             "id": "UCsrnDYrkovQhCCE8kwKcvKQ"
         },
         {
-            "id": "UCmgf8DJrAXFnU7j3u0kklUQ",
             "use_name": true,
+            "enable": true,
             "name": "BA JP",
-            "enable": true
-        }
-    ],
-    "struct": [
-        {
-            "label": "name",
-            "type": "string"
-        },
-        {
-            "label": "use_name",
-            "type": "boolean"
-        },
-        {
-            "label": "id",
-            "type": "string"
-        },
-        {
-            "label": "enable",
-            "type": "boolean"
+            "id": "UCmgf8DJrAXFnU7j3u0kklUQ"
         }
     ],
     "tips": [
-        "Youtube RSS feeds work best with a channel's UID. You can find a helper tool in the context menu of the YouTube skin where you can put in a channel's home page URL to extract the UID.",
+        "Youtube RSS feeds work with a channel's UID. You can find a helper tool in the context menu of the YouTube skin where you can put in a channel's home page URL to extract the UID.",
         "There is an internal limit of 15 entries before they get ignored. This limit exists primarily so that the Scroll UI doesn't spill outside the skin boundaries.",
-        "Order matters! Once all set up, you can quickly navigate between channels if you organize your list properly and remember where each channel is indexed. You could also just right-click through them real fast."
+        "Order matters! Once all set up, you can quickly navigate between channels with the scroll bar if you organize your list properly and remember where each channel is indexed."
     ]
 }
