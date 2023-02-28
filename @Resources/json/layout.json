@@ -2,118 +2,118 @@
     "group": "Toggle",
     "struct": [
         {
-            "label": "name",
-            "type": "string"
+            "type": "string",
+            "label": "name"
         },
         {
-            "label": "skin",
-            "type": "string"
+            "type": "string",
+            "label": "skin"
         },
         {
-            "label": "variant",
-            "type": "string"
+            "type": "string",
+            "label": "variant"
         },
         {
-            "label": "enable",
-            "type": "boolean"
+            "type": "boolean",
+            "label": "enable"
         }
     ],
     "data": [
         {
             "enable": true,
-            "variant": "weatherbanner",
+            "skin": "BlueArchive\\PrimaryBanner",
             "name": "Primary Banner",
-            "skin": "BlueArchive\\PrimaryBanner"
+            "variant": "weatherbanner"
         },
         {
             "enable": true,
-            "variant": "",
+            "skin": "BlueArchive\\Currency",
             "name": "Currency",
-            "skin": "BlueArchive\\Currency"
+            "variant": ""
         },
         {
             "enable": true,
-            "variant": "",
+            "skin": "BlueArchive\\EventBanner",
             "name": "Event Banner",
-            "skin": "BlueArchive\\EventBanner"
+            "variant": ""
         },
         {
             "enable": true,
-            "variant": "",
+            "skin": "BlueArchive\\YouTubeBubble",
             "name": "YouTube",
-            "skin": "BlueArchive\\YouTubeBubble"
+            "variant": ""
         },
         {
             "enable": true,
-            "variant": "uptime",
+            "skin": "BlueArchive\\Energy",
             "name": "Energy",
-            "skin": "BlueArchive\\Energy"
+            "variant": "uptime"
         },
         {
             "enable": true,
-            "variant": "",
+            "skin": "BlueArchive\\Options",
             "name": "Options",
-            "skin": "BlueArchive\\Options"
+            "variant": ""
         },
         {
             "enable": true,
-            "variant": "premium",
+            "skin": "BlueArchive\\Premium",
             "name": "Premium",
-            "skin": "BlueArchive\\Premium"
+            "variant": "premium"
         },
         {
             "enable": true,
-            "variant": "schalefolder",
+            "skin": "BlueArchive\\SchaleFolder",
             "name": "Schale Folder",
-            "skin": "BlueArchive\\SchaleFolder"
+            "variant": "schalefolder"
         },
         {
             "enable": true,
-            "variant": "",
+            "skin": "BlueArchive\\RefreshButton",
             "name": "Refresh Button",
-            "skin": "BlueArchive\\RefreshButton"
+            "variant": ""
         },
         {
             "enable": true,
-            "variant": "",
+            "skin": "BlueArchive\\SideApps\\Audio",
             "name": "Audio",
-            "skin": "BlueArchive\\SideApps\\Audio"
+            "variant": ""
         },
         {
             "enable": true,
-            "variant": "",
-            "name": "Discord",
-            "skin": "BlueArchive\\SideApps\\Discord"
+            "skin": "BlueArchive\\SideApps\\Phone",
+            "name": "Phone",
+            "variant": ""
         },
         {
             "enable": true,
-            "variant": "",
+            "skin": "BlueArchive\\SideApps\\RecycleBin",
             "name": "Recycle Bin",
-            "skin": "BlueArchive\\SideApps\\RecycleBin"
+            "variant": ""
         },
         {
             "enable": true,
-            "variant": "",
+            "skin": "BlueArchive\\SideApps\\Notes",
             "name": "Notes",
-            "skin": "BlueArchive\\SideApps\\Notes"
+            "variant": ""
         },
         {
             "enable": true,
-            "variant": "",
+            "skin": "BlueArchive\\Tray",
             "name": "Tray",
-            "skin": "BlueArchive\\Tray"
+            "variant": ""
         },
         {
             "enable": true,
-            "variant": "",
+            "skin": "BlueArchive\\TrayApps\\App0",
             "name": "App 0",
-            "skin": "BlueArchive\\TrayApps\\App0"
+            "variant": ""
         },
         {
             "enable": true,
-            "variant": "musicapp",
+            "skin": "BlueArchive\\TrayApps\\MusicApp",
             "name": "Music App",
-            "skin": "BlueArchive\\TrayApps\\MusicApp"
+            "variant": "musicapp"
         }
     ],
     "tips": [
