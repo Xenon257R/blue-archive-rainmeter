@@ -2,34 +2,40 @@
     "group": "YouTube",
     "struct": [
         {
-            "type": "string",
-            "label": "name"
+            "label": "name",
+            "type": "string"
         },
         {
-            "type": "boolean",
-            "label": "use_name"
+            "label": "use_name",
+            "type": "boolean"
         },
         {
-            "type": "string",
-            "label": "id"
+            "label": "font_face",
+            "type": "string"
         },
         {
-            "type": "boolean",
-            "label": "enable"
+            "label": "id",
+            "type": "string"
+        },
+        {
+            "label": "enable",
+            "type": "boolean"
         }
     ],
     "data": [
         {
-            "use_name": false,
+            "use_name": true,
+            "name": "BA - EN",
             "enable": true,
-            "name": "Blue Archive",
+            "font_face": "Fredoka One",
             "id": "UCsrnDYrkovQhCCE8kwKcvKQ"
         },
         {
             "use_name": true,
-            "enable": true,
-            "name": "BA JP",
-            "id": "UCmgf8DJrAXFnU7j3u0kklUQ"
+            "name": "BA - JP",
+            "id": "UCmgf8DJrAXFnU7j3u0kklUQ",
+            "font_face": "Fredoka One",
+            "enable": false
         }
     ],
     "tips": [

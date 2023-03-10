@@ -6,6 +6,10 @@
             "type": "string"
         },
         {
+            "label": "image",
+            "type": "string"
+        },
+        {
             "label": "seed",
             "type": "number"
         },
@@ -14,15 +18,11 @@
             "type": "number"
         },
         {
-            "label": "increment",
-            "type": "number"
-        },
-        {
             "label": "pullcost",
             "type": "number"
         },
         {
-            "label": "image",
+            "label": "message",
             "type": "string"
         },
         {
@@ -32,21 +32,31 @@
     ],
     "data": [
         {
+            "message": "%p pulls today",
             "image": "Common_Icon_Diamond.png",
             "name": "BA",
             "seed": 0,
-            "enable": false,
-            "increment": 1200,
+            "enable": true,
             "maximum": 24000,
             "pullcost": 120
+        },
+        {
+            "message": "%p ten-pulls today",
+            "image": "Common_Icon_Diamond.png",
+            "name": "BA-10 Pull",
+            "seed": 0,
+            "enable": false,
+            "maximum": 24000,
+            "pullcost": 1200
         }
     ],
     "tips": [
         "The image parameter will start its pathfinding from the [@Resources\\assets\\currency] directory. It will be most convenient to put new image assets there.",
+        "Use [%p] in your message to substitute the total pulls in its place (e.g. 0-%p pulls today).",
+        "Do not put punctuation in your message. The script will automatically append the message with a period if it rolls <50% and an exclamation mark otherwise.",
         "Some gacha games have multiple types of currencies for pulls. This widget is not smart enough to mix them, so you will have to pick one or make individual entries for each currency.",
-        "Some gacha games have discounted prices for multi-pulls. The best way to handle this is to set the [pullcost] to what a single pull would cost with the discount and set [increment] to the amount it takes for a multi-pull.",
-        "The [increment] value must be expressed in currency, not number of pulls.",
+        "Some gacha games have discounted prices for multi-pulls. The best way to handle this is to set the [pullcost] to the cost of the multi-pull and specify in the [message] that it is a multi-pull.",
         "You do not need to write in the exact values from the respective game into the fields. If for example you have a stash of 70,000 pyroxenes you're willing to spend, you can set that as the maximum.",
-        "While this skin was built with gacha games in mind, you can use this skin's framework to loosely resolve any daily randomness with custom values such as a daily coinflip or your breakfast budget."
+        "While this skin was built with gacha games in mind, you can use this skin's framework to \"resolve\" any daily randomness with custom values such as a daily coinflip or your breakfast budget."
     ]
 }

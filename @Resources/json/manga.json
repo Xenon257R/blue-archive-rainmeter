@@ -2,20 +2,20 @@
     "group": "Manga",
     "struct": [
         {
-            "type": "string",
-            "label": "name"
+            "label": "name",
+            "type": "string"
         },
         {
-            "type": "boolean",
-            "label": "use_name"
+            "label": "use_name",
+            "type": "boolean"
         },
         {
-            "type": "string",
-            "label": "id"
+            "label": "id",
+            "type": "string"
         },
         {
-            "type": "boolean",
-            "label": "enable"
+            "label": "enable",
+            "type": "boolean"
         }
     ],
     "data": [

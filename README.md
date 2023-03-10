@@ -12,13 +12,13 @@ Before use, it is advised to carefully read through every skin's **Information**
 - Network In/Out speed display
   - Daily pseudo-random premium currency generator (decorative)
 - General Options tray
-  - Includes *Rainmeter*, *Wallpaper Engine* and *Visual Settings* as defaults
+  - Includes *Resource Monitor*, *Rainmeter* and *Style Settings* as defaults
 - Master **Refresh** button
 - Master **ToggleSwitch** button
   - Requires child button **ToggleOn** (on by default) to function properly
 - Desktop "Sticky" Notes
 - Audio visualizer (can be toggled)
-- *Discord* shortcut
+- Social App of choice shortcut
 - Recycle Bin shortcut
 - Mini Audio Player (collapsible)
 - **File Explorer** shortcut
@@ -27,22 +27,23 @@ Before use, it is advised to carefully read through every skin's **Information**
 - *YouTube* channel uploads marquee (uses the YouTube RSS Feed)
 - Large taskbar tray
   - Includes a *SCHALE* icon that can be used as a template
+    - also has simplified version
   - Displays Date & Time
   - Includes Master Audio App (of those supported by _Rainmeter_)
 
-The suite also comes with a small set of default icons for common *Windows* directories, the most used browsers and several _Rainmeter_ supported music players.
+The suite also comes with a small set of default icons for common *Windows* directories, popular web browsers, several _Rainmeter_ supported music players and halos of various *Blue Archive* characters.
 
 ## Installation and Setting Up
-As this is not your typical modular skin and instead a fully fleshed-out suite, it may require a little bit of patience to set up.
+As this is not your typical modular skin and instead a fully fleshed-out suite, it will require a little bit of patience to set up.
 1. First, download the latest version of the suite here: [put link here]
 2. Install the skin by double clicking the .rmskin file
 3. At this point, you can either refer to one of two webpages to complete your setup:
    - The Beginner's Guide on *Steam Guides*, serving as a tutorial to those who may be unfamiliar or inexperienced with *Rainmeter*
-   - The GitHub Wiki (currently under construction, please be patient!), serving as a manual that goes in-depth for individual skins, their customization limit and more
+   - The GitHub Wiki, serving as a manual that goes in-depth for individual skins
 4. And you're done!
 
 ## Customization
-This suite comes with built-in UIs to simplify the process of personalizing the Rainmeter setup beyond the loaded default. This includes visual settings, database settings, global scaling, and more! Refer to the documentation on either of the webpages mentioned above to see how each skin can be customized, or you can poke around buttons and context menus and find out!
+This suite comes with built-in UIs to simplify the process of personalizing the *Rainmeter* setup beyond the loaded default. This includes visual settings, database settings, global scaling, and more! Refer to the documentation on either of the webpages mentioned above to see how each skin can be customized, or you can poke around buttons and context menus and find out from your own curiosity.
 
 ## Additional Notes
 The preset that comes with the `.rmskin` package will assume you have a 16:9 resolution and scale to your active window's height. This does not mean it will not work otherwise; it will still make its best attempt for the initial setup and in theory should only fail spectacularly if you have a narrow screen. It is up to you to adjust the position and size of skins to your specifications.
@@ -56,4 +57,4 @@ To reduce network consumption, every skin that connects to the internet to downl
 - [ConfigActive Plugin](https://github.com/jsmorley/ConfigActive) - JSMorley
 - [CursorColor Plugin](https://github.com/jsmorley/PluginColorCursor) - JSMorley
 
-**Disclaimer:** This skin, while fully inspired by _Blue Archive_, is a fan-made project and not directly affiliated with it.
+**Disclaimer:** This skin, fully inspired by _Blue Archive_, is a fan-made project and not directly affiliated with it. All rights remain with the developer and publisher of *Blue Archive*: NAT GAMES and Yostar.
