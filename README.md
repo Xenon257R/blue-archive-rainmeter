@@ -1,6 +1,6 @@
 ![BA Suite Showcase GIF](preview.gif)
 
-<sub>Sources for the wallpaper are listed in the [Credits](https://github.com/Xenon257R/blue-archive-rainmeter#credits) at the end of the README.</sub>
+<sub>Sources for the wallpaper are listed [at the end of the README](https://github.com/Xenon257R/blue-archive-rainmeter#showcase-wallpaper-sources).</sub>
 
 # Blue Archive - Rainmeter Suite
 A full *Blue Archive* themed *Rainmeter* suite for your desktop. Does not come with wallpapers. This suite was built with ***form over function*** in mind and as such may fall behind more traditional, streamlined *Rainmeter* skins in terms of easily customizable features.
@@ -38,14 +38,17 @@ Before use, it is advised to carefully read through every skin's **Information**
 The suite also comes with a small set of default icons for common *Windows* directories, popular web browsers, several _Rainmeter_ supported music players and halos of various *Blue Archive* characters.
 
 ## Installation and Setting Up
+This suite has been tested for Windows 10 and *Rainmeter* version **4.5.17** and above.
+
 As this is not your typical modular skin and instead a fully fleshed-out suite, it will require a little bit of patience to set up.
-1. First, download the latest version of the suite in the [Releases page here](https://github.com/Xenon257R/blue-archive-rainmeter/releases)
-2. Install the skin by double clicking the `.rmskin` file
-3. At this point, you can refer to one of two (or both!) webpages to complete your setup:
+1. You will first need the latest version of *Rainmeter* which you can get on [their official website](https://www.rainmeter.net/)
+2. Download the latest version of the suite in the [Releases page here](https://github.com/Xenon257R/blue-archive-rainmeter/releases)
+3. Install the skin by double clicking the `.rmskin` file
+4. At this point, you can refer to one of two (or both!) webpages to complete your setup:
    - The [Beginner's Guide](https://steamcommunity.com/sharedfiles/filedetails/?id=2864554818) on *Steam Guides*, serving as a tutorial to those who may be unfamiliar or inexperienced with *Rainmeter*
      - Will go partially in-depth about the optional *Wallpaper Engine* component as well
-   - The [GitHub Wiki](https://github.com/Xenon257R/blue-archive-rainmeter/wiki), serving as a manual that goes in-depth for individual skins
-4. And you're done!
+   - The [GitHub Wiki](https://github.com/Xenon257R/blue-archive-rainmeter/wiki) (currently under construction!), serving as a manual that goes in-depth for individual skins
+5. And you're done!
 
 
 ## Customization
@@ -57,6 +60,8 @@ The preset that comes with the `.rmskin` package will assume you have a 16:9 res
 To reduce network consumption, every skin that connects to the internet to download information will only do it once in bulk during Rainmeter's startup and when at least an hour as elapsed since the last check. As such, displayed information such as a *YouTube* channel's latest upload should not be treated as live feed.
 - The one exception to this rule is the **Primary Banner**, which updates on its own once every hour (minute if the variant is the **User Level**).
 
+This suite does **NOT** intend to serve as a full replacement of various services such as the [Steam News Hub](https://store.steampowered.com/news/) as it does not aim to replicate their full feature list - it is just miniature widget for tracking updates. Treat skins like YouTubeBubble as a fancy, themed bookmark and nothing more.
+
 ## Credits
 
 - [Weather.com V3 JSON](https://forum.rainmeter.net/viewtopic.php?f=118&t=34628#p171501) - JSMorley
@@ -65,8 +70,8 @@ To reduce network consumption, every skin that connects to the internet to downl
 
 **Disclaimer:** This suite is a fan-made project inspired by *Blue Archive* and not directly affiliated with it. Copyright remains with the developer and publisher of *Blue Archive*: Nexon, NAT GAMES and Yostar.
 
-Preview Wallpaper sources:
-- Blue Archive - Fully Interactive Konuri Maki L2D (unreleased)
+### Showcase Wallpaper Sources
+- [Blue Archive Konuri Maki - Fully Interactive L2D](https://steamcommunity.com/sharedfiles/filedetails/?id=2945479388) by Xenon257R (privated - will be available at a later notice)
 - [Pokémon HM03 (Surf)](https://steamcommunity.com/sharedfiles/filedetails/?id=2869069229) by ITZAH
 - [도기코기 DoggieCorgi](https://steamcommunity.com/sharedfiles/filedetails/?id=1661383396) by (Han)dals and stgoindol
 - [Bell Tower / Pokemon Heartgold](https://steamcommunity.com/sharedfiles/filedetails/?id=2292763401) by JD
