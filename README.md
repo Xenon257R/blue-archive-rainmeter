@@ -1,4 +1,4 @@
-![BA Suite Showcase GIF](https://i.imgur.com/Oe1O73a.gif "BA Suite Showcase GIF")
+![BA Suite Showcase GIF](preview.gif)
 
 <sub>Sources for the wallpaper are listed in the [Credits](https://github.com/Xenon257R/blue-archive-rainmeter#credits) at the end of the README.</sub>
 
