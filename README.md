@@ -1,3 +1,7 @@
+![BA Suite Showcase GIF](https://i.imgur.com/Oe1O73a.gif "BA Suite Showcase GIF")
+
+<sub>Sources for the wallpaper are listed in the [Credits](https://github.com/Xenon257R/blue-archive-rainmeter#credits) at the end of the README.</sub>
+
 # Blue Archive - Rainmeter Suite
 A full *Blue Archive* themed *Rainmeter* suite for your desktop. Does not come with wallpapers. This suite was built with ***form over function*** in mind and as such may fall behind more traditional, streamlined *Rainmeter* skins in terms of easily customizable features.
 
@@ -35,12 +39,14 @@ The suite also comes with a small set of default icons for common *Windows* dire
 
 ## Installation and Setting Up
 As this is not your typical modular skin and instead a fully fleshed-out suite, it will require a little bit of patience to set up.
-1. First, download the latest version of the suite here: [put link here]
-2. Install the skin by double clicking the .rmskin file
-3. At this point, you can either refer to one of two webpages to complete your setup:
-   - The Beginner's Guide on *Steam Guides*, serving as a tutorial to those who may be unfamiliar or inexperienced with *Rainmeter*
-   - The GitHub Wiki, serving as a manual that goes in-depth for individual skins
+1. First, download the latest version of the suite in the [Releases page here](https://github.com/Xenon257R/blue-archive-rainmeter/releases)
+2. Install the skin by double clicking the `.rmskin` file
+3. At this point, you can refer to one of two (or both!) webpages to complete your setup:
+   - The [Beginner's Guide](https://steamcommunity.com/sharedfiles/filedetails/?id=2864554818) on *Steam Guides*, serving as a tutorial to those who may be unfamiliar or inexperienced with *Rainmeter*
+     - Will go partially in-depth about the optional *Wallpaper Engine* component as well
+   - The [GitHub Wiki](https://github.com/Xenon257R/blue-archive-rainmeter/wiki), serving as a manual that goes in-depth for individual skins
 4. And you're done!
+
 
 ## Customization
 This suite comes with built-in UIs to simplify the process of personalizing the *Rainmeter* setup beyond the loaded default. This includes visual settings, database settings, global scaling, and more! Refer to the documentation on either of the webpages mentioned above to see how each skin can be customized, or you can poke around buttons and context menus and find out from your own curiosity.
@@ -57,4 +63,12 @@ To reduce network consumption, every skin that connects to the internet to downl
 - [ConfigActive Plugin](https://github.com/jsmorley/ConfigActive) - JSMorley
 - [CursorColor Plugin](https://github.com/jsmorley/PluginColorCursor) - JSMorley
 
-**Disclaimer:** This skin, fully inspired by _Blue Archive_, is a fan-made project and not directly affiliated with it. All rights remain with the developer and publisher of *Blue Archive*: NAT GAMES and Yostar.
+**Disclaimer:** This suite is a fan-made project inspired by *Blue Archive* and not directly affiliated with it. Copyright remains with the developer and publisher of *Blue Archive*: Nexon, NAT GAMES and Yostar.
+
+Preview Wallpaper sources:
+- Blue Archive - Fully Interactive Konuri Maki L2D (unreleased)
+- [Pokémon HM03 (Surf)](https://steamcommunity.com/sharedfiles/filedetails/?id=2869069229) by ITZAH
+- [도기코기 DoggieCorgi](https://steamcommunity.com/sharedfiles/filedetails/?id=1661383396) by (Han)dals and stgoindol
+- [Bell Tower / Pokemon Heartgold](https://steamcommunity.com/sharedfiles/filedetails/?id=2292763401) by JD
+- [Evangelion Beserk Mode](https://steamcommunity.com/sharedfiles/filedetails/?id=1626467688) by T1T0
+- [*Bliss*](https://en.wikipedia.org/wiki/Bliss_(image)), photograph by Charles O'Rear
