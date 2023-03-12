@@ -54,6 +54,11 @@ As this is not your typical modular skin and instead a fully fleshed-out suite, 
 ## Customization
 This suite comes with built-in UIs to simplify the process of personalizing the *Rainmeter* setup beyond the loaded default. This includes visual settings, database settings, global scaling, and more! Refer to the documentation on either of the webpages mentioned above to see how each skin can be customized, or you can poke around buttons and context menus and find out from your own curiosity.
 
+## Custom App Icons
+[This GoogleDrive](https://drive.google.com/drive/folders/1OVEtbCvVYwbtnVyXGevAI2oaCRHt1O_t) currently contains all custom/specialty apps that didn't have a reason to be in the installation package. I will slowly update the drive with more apps over time when I have some spare time and will remain outside of this GitHub repository so that the suite doesn't become bloated with just icon updates and the repository is free from the risk of getting too large that it hits the storage limit.
+
+I've written a spritesheet breakdown for the complex app icons that this suite utilizes in both the Steam Guide and the Wiki in their respective TrayApps sections, and hopefully it explains things well enough that you can draw up your own!
+
 ## Additional Notes
 The preset that comes with the `.rmskin` package will assume you have a 16:9 resolution and scale to your active window's height. This does not mean it will not work otherwise; it will still make its best attempt for the initial setup and in theory should only fail spectacularly if you have a narrow screen. It is up to you to adjust the position and size of skins to your specifications.
 
