@@ -27,7 +27,7 @@
             "image": "google.png",
             "description": "Find standard results.",
             "base_url": "https:\/\/www.google.com\/search?q=%x",
-            "enable": false,
+            "enable": true,
             "name": "Google"
         },
         {
