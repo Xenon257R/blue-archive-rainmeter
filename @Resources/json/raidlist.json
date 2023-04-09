@@ -31,7 +31,7 @@
             "subtext": "Just another [!Manage] shortcut.",
             "image": "0.jpg",
             "name": "Rainmeter",
-            "launch_text": "Go To Work",
+            "launch_text": "",
             "enable": true,
             "execution": "!Manage"
         }
