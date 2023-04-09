@@ -1,0 +1,41 @@
+{
+    "group": "Quest",
+    "struct": [
+        {
+            "type": "string",
+            "label": "name"
+        },
+        {
+            "type": "string",
+            "label": "class"
+        },
+        {
+            "type": "string",
+            "label": "description"
+        },
+        {
+            "type": "number",
+            "label": "count"
+        },
+        {
+            "type": "boolean",
+            "label": "enable"
+        }
+    ],
+    "data": [
+        {
+            "name": "BA Rainmeter Setup",
+            "enable": true,
+            "class": "challenges",
+            "description": "Personalize your BA-Themed Rainmeter Suite!",
+            "count": 1
+        }
+    ],
+    "tips": [
+        "The three predefined classes are \"daily\", \"weekly\" and \"challenges\". Using these classes will properly filter them in their respective tabs.",
+        "Any non-specific class will be categorized under the Miscellaneous tab.",
+        "An empty class string will be labeled as \"Misc.\"",
+        "Count should be a positive, non-zero integer.",
+        "Dailies will automatically reset at midnight local time, and Weeklies will reset midnight once Saturday rolls over to Sunday."
+    ]
+}

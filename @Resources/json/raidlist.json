@@ -1,0 +1,45 @@
+{
+    "group": "Raid",
+    "struct": [
+        {
+            "type": "string",
+            "label": "name"
+        },
+        {
+            "type": "string",
+            "label": "subtext"
+        },
+        {
+            "type": "string",
+            "label": "image"
+        },
+        {
+            "type": "string",
+            "label": "launch_text"
+        },
+        {
+            "type": "string",
+            "label": "execution"
+        },
+        {
+            "type": "boolean",
+            "label": "enable"
+        }
+    ],
+    "data": [
+        {
+            "subtext": "Just another [!Manage] shortcut.",
+            "image": "0.jpg",
+            "name": "Rainmeter",
+            "launch_text": "Go To Work",
+            "enable": true,
+            "execution": "!Manage"
+        }
+    ],
+    "tips": [
+        "\"Disabled\" entries will still be rendered, but grayed out. Attempts to launch a disabled game will be ignored.",
+        "The [Execution] parameter follows the same syntax as a Rainmeter bang. The brackets must be omitted.",
+        "If replicating a Rainmeter bang, only one bang is permitted with the start/end brackets omitted. If you need more than 1 Bang for your Path, it is probably unsuited for this environment.",
+        "Image assets will treat @Resources\\assets\\gamebanners as its root directory. Store any image assets you would like to use in that folder."
+    ]
+}

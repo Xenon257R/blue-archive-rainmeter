@@ -1,0 +1,88 @@
+{
+    "group": "Dungeon",
+    "struct": [
+        {
+            "type": "string",
+            "label": "name"
+        },
+        {
+            "type": "string",
+            "label": "description"
+        },
+        {
+            "type": "string",
+            "label": "image"
+        },
+        {
+            "type": "string",
+            "label": "base_url"
+        },
+        {
+            "type": "boolean",
+            "label": "enable"
+        }
+    ],
+    "data": [
+        {
+            "image": "google.png",
+            "description": "Find standard results.",
+            "base_url": "https:\/\/www.google.com\/search?q=%x",
+            "enable": false,
+            "name": "Google"
+        },
+        {
+            "image": "wikipedia.png",
+            "description": "Find information and its sources.",
+            "base_url": "https:\/\/en.wikipedia.org\/wiki\/Special:Search?search=%x&ns0=1",
+            "enable": false,
+            "name": "Wikipedia"
+        },
+        {
+            "image": "youtube.png",
+            "description": "Find videos.",
+            "base_url": "https:\/\/www.youtube.com\/results?search_query=%x",
+            "enable": false,
+            "name": "YouTube"
+        },
+        {
+            "image": "reddit.png",
+            "description": "Find answers from dedicated subreddits.",
+            "base_url": "https:\/\/www.reddit.com\/search\/?q=%x",
+            "enable": false,
+            "name": "Reddit"
+        },
+        {
+            "image": "duckduckgo.png",
+            "description": "Find things privately.",
+            "base_url": "https:\/\/duckduckgo.com\/?q=%x",
+            "enable": false,
+            "name": "DuckDuckGo"
+        },
+        {
+            "image": "amazon.png",
+            "description": "Find products.",
+            "base_url": "https:\/\/www.amazon.com\/s?k=%x",
+            "enable": false,
+            "name": "Amazon"
+        },
+        {
+            "image": "bing.png",
+            "description": "Find standard results.",
+            "base_url": "https:\/\/www.bing.com\/search?q=%x",
+            "enable": false,
+            "name": "Bing"
+        },
+        {
+            "image": "qwant.png",
+            "description": "Find things privately.",
+            "base_url": "https:\/\/www.qwant.com\/?l=en&q=%x&t=web",
+            "enable": false,
+            "name": "Qwant"
+        }
+    ],
+    "tips": [
+        "The string [%x] can be placed in the [Base URL] parameter where the search query will be substituted into.",
+        "Only a maximum of 3 entries can be enabled at a single time. Further entries are completely ignored.",
+        "Search Engine Image assets will treat @Resources\\assets\\searchicons as its root directory. Store any image assets you would like to use in that folder."
+    ]
+}
