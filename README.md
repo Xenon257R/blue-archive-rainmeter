@@ -35,7 +35,7 @@ Before use, it is advised to carefully read through every skin's **Information**
   - Includes a *SCHALE* icon that can be used as a template
     - also has simplified version
   - Displays Date & Time
-  - Includes Master Audio App (of those supported by _Rainmeter_)
+  - Includes Master Audio App (of those supported by _Rainmeter_ and WebNowPlaying)
 - **v1.1.0** - [List/Grid Submenus]((https://github.com/Xenon257R/blue-archive-rainmeter#sub-hubs))
   - Arona Main Hub style **System Grid**, best used for OS Shortcuts, System Metrics, etc.
   - Sora Angel 24 Shop style **Bookmarks and Shortcuts List**, best used as both webpage bookmarks and general directory shortcuts
@@ -76,7 +76,7 @@ To properly utilize them, you must write specific commands and bind them to `Mou
 
 I've written a spritesheet breakdown for the complex app icons that this suite utilizes in both the Steam Guide and the Wiki in their respective TrayApps sections, and hopefully it explains things well enough that you can draw up your own!
 
-If you are unable to draw your own adaptive assets and would like to request one, you are welcome to open an Issue with the `icon request` label with the icon you would like to be re-themed for this suite. I cannot promise I will deliver 100% - my artistic skills are near strictly gemoetric shapes, so simpler icons will be easier for me to tackle as opposed to highly detailed ones. However, I will make sure I give a response so you know whether I'm tackling it or not!
+If you are unable to draw your own adaptive assets and would like to request one, you are welcome to open an Issue with the `icon request` label with the icon you would like to be re-themed for this suite. I cannot promise I will deliver 100% - my artistic skills are near strictly geometric shapes, so simpler icons will be easier for me to tackle as opposed to highly detailed ones. However, I will make sure I give a response so you know whether I'm tackling it or not!
 
 ## Additional Notes
 The presets that comes with the `.rmskin` package will assume you have a 16:9 resolution and scale to your active window's height. This does not mean it will not work otherwise; it will still make its best attempt for the initial setup and in theory should only fail spectacularly if you have a narrow screen. It is up to you to adjust the position and size of skins to your specifications.
