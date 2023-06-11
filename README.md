@@ -1,4 +1,4 @@
-![BA Suite Showcase GIF](preview.gif)
+![BA Suite Showcase GIF](@Resources/_meta/preview.gif)
 
 <sub>Sources for the wallpaper are listed [at the end of the README](https://github.com/Xenon257R/blue-archive-rainmeter#showcase-wallpaper-sources).</sub>
 
@@ -63,7 +63,7 @@ As this is not your typical modular skin and instead a fully fleshed-out suite, 
 This suite comes with built-in UIs to simplify the process of personalizing the *Rainmeter* setup beyond the loaded default. This includes visual settings, database settings, global scaling, and more! Refer to the documentation on either of the webpages mentioned above to see how each skin can be customized, or you can poke around buttons and context menus and find out from your own curiosity.
 
 ## Sub Hubs
-![BA Suite Submenu Showcase GIF](preview2.gif)
+![BA Suite Submenu Showcase GIF](@Resources/_meta/preview2.gif)
 
 <sub>The full WallpaperEngine collection showcased here is listed [at the end of the README](https://github.com/Xenon257R/blue-archive-rainmeter#showcase-wallpaper-sources).</sub>
 
