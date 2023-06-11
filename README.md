@@ -65,7 +65,7 @@ This suite comes with built-in UIs to simplify the process of personalizing the 
 ## Sub Hubs
 ![BA Suite Submenu Showcase GIF](preview2.gif)
 
-<sub>The full WallpaperEngine collection showcased here are listed [at the end of the README](https://github.com/Xenon257R/blue-archive-rainmeter#showcase-wallpaper-sources).</sub>
+<sub>The full WallpaperEngine collection showcased here is listed [at the end of the README](https://github.com/Xenon257R/blue-archive-rainmeter#showcase-wallpaper-sources).</sub>
 
 With the **v1.1.0 Update**, the suite now comes with submenus! They are inactive by default and are meant to be used as secondary UIs and can be ignored if you do not intend to use it. The `.rmskin` installation will come with a layout for a Sub Hub if your intent is to use it as your primary, unchanging configuration. Their intended purpose is for `List` skins, as they are more interactive - and more importantly, large - to be directly integrated to the main layout. Not to mention, in the actual *Blue Archive* game, they *are* submenus, so might as well commit to the part!
 
