@@ -1,3 +1,4 @@
+-- Script for loading screen animations.
 local BIG_WIPE, FILL_WIPE = 1, 0
 
 -- CITATION :https://stackoverflow.com/questions/13462001/ease-in-and-ease-out-animation-formula
