@@ -3,7 +3,7 @@
 <sub>Sources for the wallpaper are listed [at the end of the README](https://github.com/Xenon257R/blue-archive-rainmeter#showcase-wallpaper-sources).</sub>
 
 # Blue Archive - Rainmeter Suite
-A full *Blue Archive* themed *Rainmeter* suite for your desktop. Does not come with wallpapers. This suite was built with ***form over function*** in mind and as such may fall behind more traditional, streamlined *Rainmeter* skins in terms of easily customizable features.
+A full *Blue Archive* themed *Rainmeter* suite for your desktop. Does not come with wallpapers. This suite was built with ***form over function*** in mind and as such may fall behind more traditional, streamlined *Rainmeter* skins in terms of easily customizable and optimized features.
 
 Before use, it is advised to carefully read through every skin's **Information** tag and understand the features of each one to see which skins and variants are best suited for you.
 
@@ -13,8 +13,8 @@ Before use, it is advised to carefully read through every skin's **Information**
 - Battery life display
   - Variant: Login duration display (partially decorative)
 - Free storage space counter
-- Network In/Out speed display
-  - Daily pseudo-random premium currency generator (decorative)
+- Daily pseudo-random premium currency generator (decorative)
+  - Variant: Network In/Out speed display
 - General Options tray
   - Includes *Resource Monitor*, *Rainmeter* and *Style Settings* as defaults
 - Master **Refresh** button
@@ -43,6 +43,7 @@ Before use, it is advised to carefully read through every skin's **Information**
   - Rin Weekly Raid style **Game List**, best used as a game catalogue/launcher hub
   - Ayumu Tasks style **Task List**, best used for tracking progress and completion of achieveable goals
     - Dailies and weeklies automatically reset appropriately
+  - Aoi - no style, but her L2D wallpaper from the wallpaper collection can be mix & matched with any of the above styles as you wish
 
 The suite also comes with a small set of default icons for common *Windows* directories, popular web browsers, several _Rainmeter_ supported music players and halos of various *Blue Archive* characters.
 
@@ -63,7 +64,7 @@ As this is not your typical modular skin and instead a fully fleshed-out suite, 
 This suite comes with built-in UIs to simplify the process of personalizing the *Rainmeter* setup beyond the loaded default. This includes visual settings, database settings, global scaling, and more! Refer to the documentation on either of the webpages mentioned above to see how each skin can be customized, or you can poke around buttons and context menus and find out from your own curiosity.
 
 ## Sub Hubs
-![BA Suite Submenu Showcase GIF](@Resources/_meta/preview2.gif)
+![BA Suite Sub Hub Showcase GIF](@Resources/_meta/preview2.gif)
 
 <sub>The full WallpaperEngine collection showcased here is listed [at the end of the README](https://github.com/Xenon257R/blue-archive-rainmeter#showcase-wallpaper-sources).</sub>
 
