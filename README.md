@@ -73,7 +73,7 @@ With the **v1.1.0 Update**, the suite now comes with submenus! They are inactive
 To properly utilize them, you must write specific commands and bind them to `MouseAction`s. Further details can be found in both the *Steam Guide* and the *GitHub Wiki*.
 
 ## Custom App Icons
-[This GoogleDrive](https://drive.google.com/drive/folders/1OVEtbCvVYwbtnVyXGevAI2oaCRHt1O_t) currently contains all custom/specialty apps that didn't have a reason to be in the installation package. I will slowly update the drive with more apps over time when I have some spare time and will remain outside of this GitHub repository so that the suite doesn't become bloated with just icon updates and the repository is free from the risk of getting too large that it hits the storage limit.
+[This GoogleDrive](https://drive.google.com/drive/folders/1OVEtbCvVYwbtnVyXGevAI2oaCRHt1O_t) currently contains all icons plus custom/specialty icons that didn't have a reason to be in the installation package. Most new icons will be added to this Drive so that the repository doesn't become bloated with just new icon releases and is free from the risk of getting too large.
 
 I've written a spritesheet breakdown for the complex app icons that this suite utilizes in both the Steam Guide and the Wiki in their respective TrayApps sections, and hopefully it explains things well enough that you can draw up your own!
 
