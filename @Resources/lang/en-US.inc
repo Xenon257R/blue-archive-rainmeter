@@ -6,16 +6,17 @@
 ; =================
 
 ; Energy
-; NOTE: [%#H] will be replaced by the hours value and [%#M] the minutes.
+; NOTE: [%#H] will be replaced by the hours value and [%#M] the minutes. This is case sensitive.
 StrEnergyRemainPower="%#Hh, %#Mm remaining."
 StrEnergyDirectPower=Directly Powered!
 StrEnergyMaxVal=Max Energy Value
 StrEnergyDecayRate=Decay Rate (per min.)
-; NOTE: [%3!i!] will be replaced by the hours value and [%2!i!] the minutes.
+; NOTE: [%3!i!] will be replaced by the hours value and [%2!i!] the minutes. This is case sensitive.
 StrEnergyLogTime=%3!i!h, %2!i!m since login.
 
 ; EventBanner
-; Steam has a limited set of supported languages. To get a list of codes, refer to steamlang.txt in the @Resources/lang directory.
+; Steam has a limited set of supported languages. The list of supported language is as follows:
+; schinese, japanese, koreana, thai, bulgarian, czech, danish, german, english, spanish, latam, greek, french, italian, indonesian, hungarian, dutch, norwegian, polish, portuguese, brazilian, romanian, russian, finnish, swedish, turkish, vietnamese, ukranian
 StrRegionType=english
 
 ; List
@@ -56,6 +57,24 @@ StrSideRecycleBinName=Recycle
 ; NOTE: Use the extra line provided below if the Recycle Bin string is too long. Otherwise, leave it blank.
 StrSideRecycleBinNameExtra=Bag
 
+; YouTubeBubble
+; NOTE: [%T] will be replaced by the relevant time value. This is case sensitive.
+StrYouTubeUploadString=Uploaded %T ago
+; NOTE: [UploadTimes], [UploadPluralTimes] and [Punctuation] are directly correlated, i.e. the [n]th time value will be used alongside the [n]th punctuation. Exactly 6 entries are expected.
+;       The values are delimited by horizontal lines (|).
+;       If your language does not have plurals, match the [UploadPluralTimes] to be exactly the same as [UploadTimes].
+StrYouTubeUploadTimes=min|hr|day|wk|mo.|yr
+StrYouTubeUploadPluralTimes=mins|hrs|days|wks|mo.|yrs
+StrYouTubeUploadPunctuation=!|!|!|.|...|...
+StrYouTubeDefaultName=YouTube
+StrYouTubeDefaultTitle=No Title
+StrYouTubePleaseWaitMessage=Please wait a moment...
+StrYouTubeNoEntriesMessage=Not Tracking Channels.
+StrYouTubeUnavailability=RSS Unavailable.
+StrYouTubeOfflineMessage=OFFLINE
+StrYouTubeDownloadErrorMessage=ERROR
+StrYouTubeConnectionErrorMessage=Connection/parse error.
+
 ; =============
 ; Dev Variables
 ; =============
@@ -85,6 +104,8 @@ StrWeatherCodeSearch=Search For Location
 StrWeatherCodeSetLoc=Click here to set the Latitude and Longitude for
 
 ; IDScraper
+StrIDSEntryPrompt=[Enter YouTube URL Here]
+StrIDSNoEntry=- No ID Found -
 StrIDSURL=Channel URL
 StrIDSID=Channel ID
 StrIDSClipAlert=Copied to Clipboard!
