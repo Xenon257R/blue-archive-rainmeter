@@ -53,6 +53,7 @@ StrSideVizName=Visualizer
 StrSideNotesName=Notes
 StrSideNoFileAlert=No Files Found
 StrSidePhoneName=Momotalk
+StrSideRecycleBinFiles=Files, 
 StrSideRecycleBinName=Recycle
 ; NOTE: Use the extra line provided below if the Recycle Bin string is too long. Otherwise, leave it blank.
 StrSideRecycleBinNameExtra=Bag
