@@ -17,25 +17,15 @@ StrEnergyLogTime=LOG_TIME %3!i!H, %2!i!M
 ; EventBanner
 ; Steam has a limited set of supported languages. The list of supported language is as follows:
 ; schinese, japanese, koreana, thai, bulgarian, czech, danish, german, english, spanish, latam, greek, french, italian, indonesian, hungarian, dutch, norwegian, polish, portuguese, brazilian, romanian, russian, finnish, swedish, turkish, vietnamese, ukranian
-StrRegionType=english
+StrSteamRegionType=english
+StrSteamLoadingText=LOADING-
+StrSteamNoUpdateText=NO_UPDATE
+StrSteamNoEntry=EMPTY
+StrSteamNoDateText=NO_DATE
 
-; List
-StrAronaGridActVer=INSTALL_VER
-StrAronaGridAlert=NEW_VER
-StrDungeonListHeader=SEARCH_HEADER
-StrQuestListAllHeader=ALL_TAB
-StrQuestListDailyHeader=DAILY_TAB
-StrQuestListWeeklyHeader=WEEKLY_TAB
-StrQuestListChallengesHeader=HARD_TAB
-StrQuestListMiscellaneousHeader=MISC_TAB
-StrRaidListHeader=GAME_HEADER
-StrRaidListAvailability=GAME_AVAILABILITY
-StrShopListDeselect=DESELECT
-StrShopListOpen=OPEN
-StrShopListSelectTotal=QUANTITY_SELECT#CRLF#TOTAL
-
-; Premium
+; Network/Premium
 StrPremiumInOut=BPS IN_OUT
+StrPremiumNoData=NO_GACHA_DATA
 
 ; PrimaryBanner
 ; NOTE: [StrRegionISO] MUST be an ISO 639-1 standard region code for WeatherBanner to work.
@@ -44,13 +34,23 @@ StrWeatherStatDefault=CLEAR
 StrWeatherCityDefault=SCHALE
 StrWeatherCountryDefault=KIVOTOS
 
-; SchaleFolder
+; SchaleFolder/MangaFolder
 StrSchaleFolderName=WIN_DIR
 StrSchaleFolderRightClick=RIGHT_CLICK_FILLER
+StrMangaFolderLanguage=en
+StrMangaNewChapterAlert=NEW_CHAPTER_ALERT
+StrMangaFolderNoTitle=No Title
+StrMangaFolderOpen=>OPN
+StrMangaFolderClose=>CLS
+StrMangaFolderEmpty=>MTY
+StrMangaFolderError=>ERR
+StrMangaFolderOffline=>OFFLN
 
-; Sideapps
+; SideApps
 StrSideVizName=VISUALIZER
 StrSideNotesName=NOTES
+StrSideNotesWarningHeader=WARN
+StrSideNotesWarningSubtext=OPEN_.txt_WITH_CAUTION
 StrSideNoFileAlert=NO_NOTES_FOUND
 StrSidePhoneName=MOMOTALK
 StrSideRecycleBinFiles=FILES_
@@ -75,6 +75,32 @@ StrYouTubeUnavailability=RSS_OFFLINE
 StrYouTubeOfflineMessage=OFFLINE
 StrYouTubeDownloadErrorMessage=ERROR
 StrYouTubeConnectionErrorMessage=CONNECT_ERROR
+
+; ========
+; Sub Hubs
+; ========
+
+StrAronaGridActVer=INSTALL_VER
+StrAronaGridAlert=NEW_VER
+StrDungeonListHeader=SEARCH_HEADER
+StrDugeonListSearch=SEARCH>>
+StrQuestListAllHeader=ALL_TAB
+StrQuestListCountLabel=COUNT
+StrQuestListCompleteButton=FINISH
+StrQuestListRelistButton=RELIST
+StrQuestListDailyHeader=DAILY_TAB
+StrQuestListWeeklyHeader=WEEKLY_TAB
+StrQuestListChallengesHeader=HARD_TAB
+StrQuestListMiscellaneousHeader=MISC_TAB
+StrQuestListDailyTag=DAILY_TAG
+StrQuestListWeeklyTag=WEEKLY_TAG
+StrQuestListChallengesTag=HARD_TAG
+StrQuestListMiscellaneousTag=MISC_TAG
+StrRaidListHeader=GAME_HEADER
+StrRaidListAvailability=GAME_AVAILABILITY
+StrShopListDeselect=DESELECT
+StrShopListOpen=OPEN
+StrShopListSelectTotal=QUANTITY_SELECT#CRLF#TOTAL
 
 ; =============
 ; Dev Variables

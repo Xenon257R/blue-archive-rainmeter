@@ -17,25 +17,15 @@ StrEnergyLogTime=%3!i!h, %2!i!m since login.
 ; EventBanner
 ; Steam has a limited set of supported languages. The list of supported language is as follows:
 ; schinese, japanese, koreana, thai, bulgarian, czech, danish, german, english, spanish, latam, greek, french, italian, indonesian, hungarian, dutch, norwegian, polish, portuguese, brazilian, romanian, russian, finnish, swedish, turkish, vietnamese, ukranian
-StrRegionType=english
+StrSteamRegionType=english
+StrSteamLoadingText=Loading...
+StrSteamNoUpdateText=No Updates Found!
+StrSteamNoEntry=Empty
+StrSteamNoDateText=No Date
 
-; List
-StrAronaGridActVer=Active Version
-StrAronaGridAlert=Update Available!
-StrDungeonListHeader=Search Query
-StrQuestListAllHeader=All
-StrQuestListDailyHeader=Daily
-StrQuestListWeeklyHeader=Weekly
-StrQuestListChallengesHeader=Challenges
-StrQuestListMiscellaneousHeader=Miscellaneous
-StrRaidListHeader=Game Select
-StrRaidListAvailability=Games Available
-StrShopListDeselect=Deselect All
-StrShopListOpen=Open Selected
-StrShopListSelectTotal=path(s) currently#CRLF#selected
-
-; Premium
+; Network/Premium
 StrPremiumInOut=Bps In/Out.
+StrPremiumNoData=In gacha debt.
 
 ; PrimaryBanner
 ; NOTE: [StrRegionISO] MUST be an ISO 639-1 standard region code for WeatherBanner to work.
@@ -44,13 +34,23 @@ StrWeatherStatDefault=Clear
 StrWeatherCityDefault=SCHALE
 StrWeatherCountryDefault=Kivotos
 
-; SchaleFolder
+; SchaleFolder/MangaFolder
 StrSchaleFolderName=File Explorer
 StrSchaleFolderRightClick=<right-click>
+StrMangaFolderLanguage=en
+StrMangaNewChapterAlert=New Chapter(s) Available!
+StrMangaFolderNoTitle=No Title
+StrMangaFolderOpen=OPEN
+StrMangaFolderClose=CLOSE
+StrMangaFolderEmpty=EMPTY
+StrMangaFolderError=ERROR
+StrMangaFolderOffline=OFFLINE
 
-; Sideapps
+; SideApps
 StrSideVizName=Visualizer
 StrSideNotesName=Notes
+StrSideNotesWarningHeader=SENSITIVE DATA!
+StrSideNotesWarningSubtext=Open the .txt in private.
 StrSideNoFileAlert=No Files Found
 StrSidePhoneName=Momotalk
 StrSideRecycleBinFiles=Files, 
@@ -75,6 +75,32 @@ StrYouTubeUnavailability=RSS Unavailable.
 StrYouTubeOfflineMessage=OFFLINE
 StrYouTubeDownloadErrorMessage=ERROR
 StrYouTubeConnectionErrorMessage=Connection/parse error.
+
+; ========
+; Sub Hubs
+; ========
+
+StrAronaGridActVer=Active Version
+StrAronaGridAlert=Update Available!
+StrDungeonListHeader=Search Query
+StrDugeonListSearch=Search: 
+StrQuestListAllHeader=All
+StrQuestListCountLabel=Count
+StrQuestListCompleteButton=Complete
+StrQuestListRelistButton=Relist
+StrQuestListDailyHeader=Daily
+StrQuestListWeeklyHeader=Weekly
+StrQuestListChallengesHeader=Challenges
+StrQuestListMiscellaneousHeader=Miscellaneous
+StrQuestListDailyTag=Daily
+StrQuestListWeeklyTag=Weekly
+StrQuestListChallengesTag=Challenges
+StrQuestListMiscellaneousTag=Misc.
+StrRaidListHeader=Game Select
+StrRaidListAvailability=Games Available:
+StrShopListDeselect=Deselect All
+StrShopListOpen=Open
+StrShopListSelectTotal=path(s) currently#CRLF#selected
 
 ; =============
 ; Dev Variables
