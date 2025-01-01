@@ -35,11 +35,5 @@
             "enable": true,
             "execution": "!Manage"
         }
-    ],
-    "tips": [
-        "\"Disabled\" entries will still be rendered, but grayed out. Attempts to launch a disabled game will be ignored.",
-        "The [Execution] parameter follows the same syntax as a Rainmeter bang. The brackets must be omitted.",
-        "If replicating a Rainmeter bang, only one bang is permitted with the start/end brackets omitted. If you need more than 1 Bang for your Path, it is probably unsuited for this environment.",
-        "Image assets will treat @Resources\\assets\\gamebanners as its root directory. Store any image assets you would like to use in that folder."
     ]
 }

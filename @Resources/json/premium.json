@@ -49,14 +49,5 @@
             "maximum": 24000,
             "pullcost": 1200
         }
-    ],
-    "tips": [
-        "The image parameter will start its pathfinding from the [@Resources\\assets\\currency] directory. It will be most convenient to put new image assets there.",
-        "Use [%p] in your message to substitute the total pulls in its place (e.g. 0-%p pulls today).",
-        "Do not put punctuation in your message. The script will automatically append the message with a period if it rolls <50% and an exclamation mark otherwise.",
-        "Some gacha games have multiple types of currencies for pulls. This widget is not smart enough to mix them, so you will have to pick one or make individual entries for each currency.",
-        "Some gacha games have discounted prices for multi-pulls. The best way to handle this is to set the [pullcost] to the cost of the multi-pull and specify in the [message] that it is a multi-pull.",
-        "You do not need to write in the exact values from the respective game into the fields. If for example you have a stash of 70,000 pyroxenes you're willing to spend, you can set that as the maximum.",
-        "While this skin was built with gacha games in mind, you can use this skin's framework to \"resolve\" any daily randomness with custom values such as a daily coinflip or your breakfast budget."
     ]
 }

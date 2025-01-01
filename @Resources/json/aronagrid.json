@@ -43,14 +43,5 @@
             "execution": "!Manage",
             "dimensions": "0,6,12,6"
         }
-    ],
-    "tips": [
-        "Up to a maximum of 12 entries can be created - any additional entries will be ignored. Bad/non-functioning elements still count towards the 12 if they are enabled.",
-        "The dimensions parameter follows the structure of [x,y,w,h] without the brackets. X and Y are 0-indexed.",
-        "Two special classes called [version] and [resources] exist. Specifying an entry with one of the two classes will enable unique features.",
-        "Each special class may only be instanced once. The first entry that specifies itself of the class is given precedence.",
-        "The [Execution] parameter follows the same syntax as a Rainmeter bang. The brackets must be omitted.",
-        "If replicating a Rainmeter bang, only one bang is permitted with the start/end brackets omitted. If you need more than 1 Bang for your Path, it is probably unsuited for this environment.",
-        "Button Image assets will treat @Resources\\assets\\largebuttons as its root directory. Store any image assets you would like to use in that folder."
     ]
 }

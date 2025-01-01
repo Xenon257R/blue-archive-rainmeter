@@ -25,12 +25,5 @@
             "name": "TODO",
             "sensitive": false
         }
-    ],
-    "tips": [
-        "DO NOT USE THIS SKIN TO STORE SENSITIVE INFORMATION. There is a SINGULAR feature that warns you about marked files so they are not immediately leaked, but it is NOT proper security. Store your passwords elsewhere.",
-        "The [File ID] will only accept a numeric input. Rainmeter may permit negative and decimal numbers, but the script will simply ignore those characters (i.e. 123 is the same as -1.23), so keep that in mind.",
-        "Changing\/removing the last occurence of a File ID after its initial creation will destroy the file and all its contents, so do so with caution.",
-        "If you wish to not use a file but save it for future use, disable the entry instead of outright deleting it so the file is preserved.",
-        "Multiple entries can share the same File ID, linking them to the same .txt file. Why you would want to do that, I do not know."
     ]
 }

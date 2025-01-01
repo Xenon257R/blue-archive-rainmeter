@@ -79,10 +79,5 @@
             "enable": false,
             "name": "Qwant"
         }
-    ],
-    "tips": [
-        "The string [%x] can be placed in the [Base URL] parameter where the search query will be substituted into.",
-        "Only a maximum of 3 entries can be enabled at a single time. Further entries are completely ignored.",
-        "Search Engine Image assets will treat @Resources\\assets\\searchicons as its root directory. Store any image assets you would like to use in that folder."
     ]
 }

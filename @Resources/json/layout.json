@@ -142,17 +142,5 @@
             "enable": true,
             "skin": "BlueArchive\\TrayApps\\MusicApp"
         }
-    ],
-    "tips": [
-        "This is the MOST important database to maintain if you are using the ToggleSwitch. Remember to add every skin and the variant you use here so it gets properly switched on and off.",
-        "Order matters! The script goes down the list, (de)activating each skin one by one, effectively ignoring any load order values you used in Rainmeter. Bottommost skins first, topmost skins last.",
-        "Use backslash (\\) and not forwardslash (\/). Rainmeter automatically escapes the backslash so you don't (and shouldn't) type it twice.",
-        "The [Skin] parameter will start its pathfinding from the [Rainmeter\\Skins] folder which by default should be installed in [Documents].",
-        "The [Variant] field can be left empty if the skin has only one variant. Empty entries will be displayed as \"<empty>\".",
-        "For [Variant], do NOT to append your entry with [.ini].",
-        "The [ToggleSwitch] and [ToggleOn] skins have hardcoded behaviors to be enabled\/disabled; putting them in the database is an unnecessary redundancy.",
-        "[Main Only] is a boolean parameter to specify whether or not a skin should only be active in the main hub.",
-        "TrayApps, regardless of the [Main Only] value are forced to be hidden in Sub Hubs. The only exception to this rule is the MusicApp. This behavior is enforced by the Tray skin.",
-        "TrayApps should have [Main Only] Toggled OFF. This is due to Rainmeter's overlapping skin issues when they are unloaded and reloaded live and has been addressed in the backend."
     ]
 }

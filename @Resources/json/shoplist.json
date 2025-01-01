@@ -30,14 +30,5 @@
             "enable": true,
             "path": "!Manage"
         }
-    ],
-    "tips": [
-        "While intended primarily for browser bookmarks and filepath shortcuts, any Rainmeter Bang (with brackets removed) will work in the [Path] parameter.",
-        "If replicating a Rainmeter bang, only one bang is permitted with the start/end brackets omitted. If you need more than 1 Bang for your Path, it is probably unsuited for this environment.",
-        "[Launch Cost] may be a non-numeric value and serve no functional purpose.",
-        "Local filepaths will always be marked with a shortcut icon.",
-        "Big Icon Image assets will treat @Resources\\assets\\shopitems as its root directory. Store any image assets you would like to use in that folder.",
-        "The [Path] parameter follows the same syntax as a Rainmeter bang. The brackets must be omitted.",
-        "If the link is found to be a browser path, its favicon will be downloaded and archived to be used as a currency icon. Otherwise, it will be identified as a shortcut."
     ]
 }

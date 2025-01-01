@@ -37,10 +37,5 @@
             "font_face": "Fredoka One",
             "enable": false
         }
-    ],
-    "tips": [
-        "Youtube RSS feeds work with a channel's UID. You can find a helper tool in the context menu of the YouTube skin where you can put in a channel's home page URL to extract the UID.",
-        "There is an internal limit of 15 entries before they get ignored. This limit exists primarily so that the Scroll UI doesn't spill outside the skin boundaries.",
-        "Order matters! Once all set up, you can quickly navigate between channels with the scroll bar if you organize your list properly and remember where each channel is indexed."
     ]
 }
