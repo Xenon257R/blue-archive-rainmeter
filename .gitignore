@@ -1,6 +1,7 @@
 .vscode
 .luacheckrc
 *.cache
+@Resources/template/key.inc
 @Resources/notes/*
 !@Resources/notes/0.txt
 !@Resources/notes/notes.cache
