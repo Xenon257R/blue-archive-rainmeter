@@ -1,13 +1,13 @@
 [Variables]
 @includeHubs=#@#user\hubpaths.inc
-UnloadHome=[&HubScript:ToggleCommand("DeactivateConfig",true)][!ActivateConfig "BlueArchive\HomeButton"]
-LoadHome=#WHome#[!DeactivateConfig "BlueArchive\List"][!DeactivateConfig "BlueArchive\HomeButton"][&HubScript:ToggleCommand("ActivateConfig",true)]
-QSTS=#WQuest##UnloadHome#[!ActivateConfig "BlueArchive\List" "questlist.ini"]
-RAID=#WRaid##UnloadHome#[!ActivateConfig "BlueArchive\List" "raidlist.ini"]
-GRID=#WGrid##UnloadHome#[!ActivateConfig "BlueArchive\List" "aronagrid.ini"]
-SHOP=#WShop##UnloadHome#[!ActivateConfig "BlueArchive\List" "shoplist.ini"]
-DNGN=#WDungeon##UnloadHome#[!ActivateConfig "BlueArchive\List" "dungeonlist.ini"]
-LSCR=[!ActivateConfig "BlueArchive\0_LoadScreen"][!ZPos "0" "BlueArchive\0_LoadScreen"][!Delay 600]
+UnloadHome=[&HubScript:ToggleCommand("DeactivateConfig",true)][!ActivateConfig "#ROOTCONFIG#\HomeButton"]
+LoadHome=#WHome#[!DeactivateConfig "#ROOTCONFIG#\List"][!DeactivateConfig "#ROOTCONFIG#\HomeButton"][&HubScript:ToggleCommand("ActivateConfig",true)]
+QSTS=#WQuest##UnloadHome#[!ActivateConfig "#ROOTCONFIG#\List" "questlist.ini"]
+RAID=#WRaid##UnloadHome#[!ActivateConfig "#ROOTCONFIG#\List" "raidlist.ini"]
+GRID=#WGrid##UnloadHome#[!ActivateConfig "#ROOTCONFIG#\List" "aronagrid.ini"]
+SHOP=#WShop##UnloadHome#[!ActivateConfig "#ROOTCONFIG#\List" "shoplist.ini"]
+DNGN=#WDungeon##UnloadHome#[!ActivateConfig "#ROOTCONFIG#\List" "dungeonlist.ini"]
+LSCR=[!ActivateConfig "#ROOTCONFIG#\0_LoadScreen"][!ZPos "0" "#ROOTCONFIG#\0_LoadScreen"][!Delay 600]
 
 [HubScript]
 Measure=Script
@@ -17,5 +17,5 @@ ScriptFile=#@#lua\toggleswitch.lua
 Measure=Calc
 Formula=1
 IfEqualValue=1
-IfEqualAction=[&HubScript:AddEntry("BlueArchive\ToggleSwitch",true)][&HubScript:AddEntry("BlueArchive\ToggleSwitch\ToggleOn",true)]
+IfEqualAction=[&HubScript:AddEntry("#ROOTCONFIG#\ToggleSwitch",true)][&HubScript:AddEntry("#ROOTCONFIG#\ToggleSwitch\ToggleOn",true)]
 UpdateDivider=-1
