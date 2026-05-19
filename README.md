@@ -75,9 +75,7 @@ To properly utilize them, you must write specific commands and bind them to `Mou
 ## Custom App Icons
 [This GoogleDrive](https://drive.google.com/drive/folders/1OVEtbCvVYwbtnVyXGevAI2oaCRHt1O_t) currently contains all icons plus custom/specialty icons that didn't have a reason to be in the installation package. Most new icons will be added to this Drive so that the repository doesn't become bloated with just new icon releases and is free from the risk of getting too large.
 
-I've written a spritesheet breakdown for the complex app icons that this suite utilizes in both the Steam Guide and the Wiki in their respective TrayApps sections, and hopefully it explains things well enough that you can draw up your own!
-
-If you are unable to draw your own adaptive assets and would like to request one, you are welcome to open an Issue with the `icon request` label with the icon you would like to be re-themed for this suite. I cannot promise I will deliver 100% - my artistic skills are near strictly geometric shapes, so simpler icons will be easier for me to tackle as opposed to highly detailed ones. However, I will make sure I give a response so you know whether I'm tackling it or not!
+A breakdown of the TrayApp spritesheet anatomy accompanied by a general guideline to draw your own is available at the wiki page linked [here](https://github.com/Xenon257R/blue-archive-rainmeter/wiki/Drawing-Icons). If you are unable to draw your own, you may opt to open an Issue with the `icon request` label, but fulfillment is not guaranteed. However, I will try my best to at least give a response so you know whether I'm tackling it or not.
 
 ## Additional Notes
 The presets that comes with the `.rmskin` package will assume you have a 16:9 resolution and scale to your active window's height. This does not mean it will not work otherwise; it will still make its best attempt for the initial setup and in theory should only fail spectacularly if you have a narrow screen. It is up to you to adjust the position and size of skins to your specifications.
